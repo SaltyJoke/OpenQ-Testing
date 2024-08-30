@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Live Anthropics Data Engineering for Fine-Tuning</title>
+    <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=w0q-MRJMOiLdC0i2btrA7VTvLezsirsPFqUmTvbCx6-6oNfEJv5gppmgHYX0PO7H7z7XYL_O40I2sNRZLbTR-KRyMpivM1Q6XtkIAvQzFLzWSHLvKaIL6-8kRvMicWf04xPreA1atvBPTBzhT-z3pj53jpGoJZHSRocrNlQqy4Elfdf5J0vKwu5gWXmmc92XT0UjbPFEGNC64AbuP1IuJ17mapiiw7wX5ixkxZukT5n5JUk_vl13bww7YISOJChkfbC2OScg1PbM72xoYLX2HQ" charset="UTF-8"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: 'Orbitron', sans-serif;
+            background-color: #000;
+            color: #0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            background: radial-gradient(circle, rgba(0, 0, 0, 1) 0%, rgba(23, 32, 42, 1) 100%);
+        }
+        .content {
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        #responses {
+            height: 60vh;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: #0f0 #000;
+        }
+        .response {
+            opacity: 0;
+            animation: fadeInUp 1s forwards;
+            animation-delay: var(--animation-order);
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #000;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #0f0;
+        }
+        .explore-button {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #0f0;
+            color: #000;
+            border: 2px solid #0f0;
+            border-radius: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            box-shadow: 0 0 10px #0f0, 0 0 20px #0f0, 0 0 30px #0f0;
+            transition: all 0.3s ease-in-out;
+            text-decoration: none; /* Remove underline from links */
+        }
+        .explore-button:hover {
+            background-color: #000;
+            color: #0f0;
+            box-shadow: 0 0 20px #0f0, 0 0 40px #0f0, 0 0 60px #0f0;
+        }
+        .explore-text {
+            position: absolute;
+            top: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 14px;
+            animation: fadeIn 2s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h2>COMING SOON: Live Autonomous Intelligence Center for the Community</h2>
+        <div id="responses"></div>
+    </div>
+    <button class="explore-button" onclick="window.location='{{ url_for('attenuation') }}'">🚀 Explore the Open Source Autonomous Intelligence for Electronics 🚀</button>
+
+    <script>
+        $(document).ready(function() {
+            const questions = [
+                "Explain the {specific_code} difference between FPGA and microcontroller very fast. ",
+                "How does a Phase-Locked Loop (PLL) work in microelectronics, $explain fast.",
+                "What are the benefits of using open-source hardware in embedded systems? + explain concisively in {open_source_arch}.",
+                "Describe how a microcontroller's GPIO (General Purpose Input Output) pins work. Return low level code examples. &* For each {iterative_question} generate at least a couple of examples",
+                "What is an FPGA fabric? Return low level code examples. For each iterative question generate at least a couple of examples ***",
+                "How does SPI communication protocol work in microcontrollers? Return low level code examples.",
+                "Explain the concept of hardware description languages like VHDL and Verilog. Return low level code examples.",
+                "What are the key differences between Arduino and Raspberry Pi in terms of usage in electronics projects? Return low level code examples.",
+                "How do interrupts improve the efficiency of a microcontroller? Return low level code examples.",
+                /*
+                "Describe the process of programming an FPGA compared to a microcontroller. Return low level code examples.",
+                "What role do capacitors play in smoothing voltage fluctuations in power supplies? Return low level code examples.",
+                "Explain the significance of pull-up and pull-down resistors in digital circuits. Return low level code examples.",
+                "How can open-source software tools be used in FPGA development? Return low level code examples.",
+                "What are the advantages of using ARM Cortex microcontrollers in embedded systems? Return low level code examples.",
+                "Explain the function of an EEPROM in embedded systems. Return low level code examples.",
+                "What is the purpose of a watchdog timer in a microcontroller Return low level code examples.?",
+                "How does I2C communication differ from UART in embedded systems? Return low level code examples.",
+                "What is the role of an FPGA in software-defined radio? Return low level code examples.",
+                "Describe the process of debouncing a switch in digital electronics. Return low level code examples.",
+                "How does thermal management impact the reliability of embedded systems? Return low level code examples.",
+                "Explain the use of PWM (Pulse Width Modulation) in controlling motor speed. Return low level code examples.",
+                "What is the difference between synchronous and asynchronous serial communication? Return low level code examples.",
+                "How do open-source projects contribute to the IoT (Internet of Things) ecosystem? Return low level code examples.",
+                "Describe the impact of FPGA reconfigurability on prototyping electronic devices. Return low level code examples.",
+                "What are the challenges of power management in battery-operated embedded systems? Return low level code examples.",
+                "How can FPGAs be used in machine learning applications? Return low level code examples.",
+                "Explain the concept of real-time operating systems (RTOS) in embedded systems. Return low level code examples.",
+                "What are the security concerns associated with IoT devices and how can they be mitigated? Return low level code examples.",
+                "How does the use of an FPGA affect the design cycle of an electronic product? Return low level code examples.",
+                "Describe the role of ADCs (Analog to Digital Converters) in sensor interfacing. Return low level code examples.",
+                // Include other questions here...
+                */
+            ];
+
+
+            function fetchResponse(index = 0) {
+                const question = questions[index % questions.length];
+                $.getJSON('/get-response', { 'question': question }, function(data) {
+                    const responseHtml = `<div class="response" style="--animation-order:${index * 0.1}s;"><strong>Question:</strong> ${data.question}<br><strong>Response:</strong> ${data.response}</div>`;
+                    $('#responses').prepend(responseHtml);
+                    setTimeout(() => fetchResponse(index + 1), 1);
+                });
+            }
+
+            fetchResponse();
+        });
+    </script>
+</body>
+</html>
