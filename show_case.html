@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Autonomous Server and Data Processing Simulation</title>
+<title>Autonomous Server and Data Processing Simulation</title> <!--Change this to Our Process For Teaching The AI-->
 <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=1nI1KG-WeMVbgNFZ6gWMpcPLZhYuy6pJsd4GIihpyFYrlwP6El0vMdMxMkxnrAnmdLrTF9gWT354Uh_o_0-7krl-mPHgQ-n8EEKXxkcZ8H6Vdlk5mxHUf87qoJLWWdGjvHMvEpJOLwG9_rGBUspZ44stOLOsT7VgDe7_2pC3juW3de-yYXFB4air2eaUClpmIQ4--slhbSm_lX2BRTTnxlUDAIY46WRNjJ0nyqJDetRBXEQXD_Ax3UZl-q8LH699OIQfYEtSvkMqlcUJoNuWsw" charset="UTF-8"></script><style>
     body, html {
         height: 100%;
@@ -86,7 +86,7 @@
 
 <div id="matrix"></div>
 <div id="fullscreen-window" class="fullscreen-window">
-    <h2>Assembler Script Simulation</h2>
+    <h2>Assembler Script Simulation</h2> <!--Change this to -->
     <p>Simulating the compilation of the assembler script...</p>
     <pre id="assembler-output"></pre>
 </div>
@@ -153,7 +153,8 @@ INT 20h
 
     // Simulate compilation and hardware interaction process
     setTimeout(() => {
-        const compilationResult = `
+        //Set this const to describe the process of PDF -> JSON -> Reformatted JSON -> JSONL -> Combined JSONL
+        const compilationResult = ` 
 ; Script has compiled successfully!
 
 ; Status: 'Simulated Hardware Interactions'
@@ -232,58 +233,49 @@ const generateIPAddress = () => `192.168.${Math.floor(Math.random() * 255)}.${Ma
 
 const serverRoles = [
   {
-    name: "Data Generation Server",
-    process: "Generating data...",
+    name: "Data Generation Server", //Set this to "Processing PDF". 
+    process: "Generating data...", 
     execute: () => {
       // Simulate generating data
       console.log("Generating random data...");
-      const data = Array.from({ length: 10 }, () => Math.floor(Math.random() * 100));
+      const data = ""; //Replace with the documentation passage.
       console.log("Generated data:", data);
       return data;
     }
   },
   {
-    name: "Data Processing Server",
+    name: "Data Processing Server", //Set this to "Reformatting JSON".
     process: "Processing data...",
-    execute: (data) => {
+    execute: () => {
       // Simulate processing data (e.g., sorting)
-      console.log("Processing data...");
-      const processedData = data.sort((a, b) => a - b);
-      console.log("Processed data:", processedData);
+      console.log("Processing data..."); //Change this to "Reformatting Data"
+      const processedData = ""; //Replace with JSON response.
+      console.log("Processed data:", processedData); //Change this to "Reformatting Data"
       return processedData;
     }
   },
   {
-    name: "Data Cleaning Server",
+    name: "Data Cleaning Server", //Set this to "Converting JSON to JSONL"
     process: "Cleaning data...",
-    execute: (data) => {
+    execute: () => {
       // Simulate cleaning data (e.g., removing duplicates)
-      console.log("Cleaning data...");
-      const cleanedData = [...new Set(data)];
-      console.log("Cleaned data:", cleanedData);
+      console.log("Cleaning data..."); //Change this to "Converting Data"
+      const cleanedData = ""; //Set this to a JSONL 
+      console.log("Cleaned data:", cleanedData); //Change this to "Converting Data"
       return cleanedData;
     }
   },
   {
-    name: "Data Reiteration Server",
+    name: "Data Reiteration Server", //Set this to "Combining JSON Files"
     process: "Reiterating data...",
-    execute: (data) => {
+    execute: () => {
       // Simulate reiterating over data (e.g., doubling values)
-      console.log("Reiterating data...");
-      const reiteratedData = data.map((item) => item * 2);
-      console.log("Reiterated data:", reiteratedData);
+      console.log("Reiterating data..."); //Set this to "Combining Data"
+      const reiteratedData = ""; //Replace with a different JSON response.
+      console.log("Reiterated data:", reiteratedData); //Set this to "Combined Data"
       return reiteratedData;
     }
   },
-  {
-    name: "Data Output Server",
-    process: "Outputting data...",
-    execute: (data) => {
-      // Simulate outputting data
-      console.log("Outputting data:", data);
-      // This could involve sending data to a file, database, or external system
-    }
-  }
 ];
 
 // Example of running the simulated server roles in sequence
