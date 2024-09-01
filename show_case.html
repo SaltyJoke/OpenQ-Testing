@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Autonomous Server and Data Processing Simulation</title> <!--Change this to Our Process For Teaching The AI-->
-<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=1nI1KG-WeMVbgNFZ6gWMpcPLZhYuy6pJsd4GIihpyFYrlwP6El0vMdMxMkxnrAnmdLrTF9gWT354Uh_o_0-7krl-mPHgQ-n8EEKXxkcZ8H6Vdlk5mxHUf87qoJLWWdGjvHMvEpJOLwG9_rGBUspZ44stOLOsT7VgDe7_2pC3juW3de-yYXFB4air2eaUClpmIQ4--slhbSm_lX2BRTTnxlUDAIY46WRNjJ0nyqJDetRBXEQXD_Ax3UZl-q8LH699OIQfYEtSvkMqlcUJoNuWsw" charset="UTF-8"></script><style>
+<title>Autonomous Server and Data Processing Simulation</title>
+<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=1nI1KG-WeMVbgNFZ6gWMpcPLZhYuy6pJsd4GIihpyFYrlwP6El0vMdMxMkxnrAnmdLrTF9gWT354Uh_o_0-7krl-mPHgQ-n8EEKXxkcZ8H6Vdlk5mxHUf87qoJLWWdGjvHMvEpJOLwG9_rGBUspZ44stOLOsT7VgDe7_2pC3juW3de-yYXFB4air2eaUClpmIQ4--slhbSm_lX2BRTTnxlUDAIY46WRNjJ0nyqJDetRBXEQXD_Ax3UZl-q8LH699OIQfYEtSvkMqlcUJoNuWsw" charset="UTF-8"></script>
+<style>
     body, html {
         height: 100%;
         margin: 0;
@@ -80,13 +81,32 @@
         overflow: auto;
         animation: fadeIn 2s forwards; /* Use the existing fadeIn animation */
     }
+    .live-button {
+        display: block;
+        margin: 20px auto;
+        padding: 10px 20px;
+        background-color: lime;
+        color: black;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+    .live-button:hover {
+        background-color: darkgreen;
+    }
 </style>
 </head>
 <body>
 
+<a href="show_case.html" class="live-button">Live</a>
+
 <div id="matrix"></div>
 <div id="fullscreen-window" class="fullscreen-window">
-    <h2>Assembler Script Simulation</h2> <!--Change this to -->
+    <h2>Assembler Script Simulation</h2>
     <p>Simulating the compilation of the assembler script...</p>
     <pre id="assembler-output"></pre>
 </div>
@@ -153,8 +173,7 @@ INT 20h
 
     // Simulate compilation and hardware interaction process
     setTimeout(() => {
-        //Set this const to describe the process of PDF -> JSON -> Reformatted JSON -> JSONL -> Combined JSONL
-        const compilationResult = ` 
+        const compilationResult = `
 ; Script has compiled successfully!
 
 ; Status: 'Simulated Hardware Interactions'
@@ -191,14 +210,12 @@ function simulateHardwareInteractions() {
     document.body.appendChild(motorIndicator);
 
     const sensorIndicator = document.createElement('div');
-    sensorIndicator.innerHTML = 'Contextual Interpretation:<span style="color:lime;"> Assembler interaction with Kernel for simulating lights and a motor runing in the background</span>';
+    sensorIndicator.innerHTML = 'Contextual Interpretation:<span style="color:lime;"> Assembler interaction with Kernel for simulating lights and a motor running in the background</span>';
     document.body.appendChild(sensorIndicator);
 
     // Additional visual effects for engagement
     document.body.style.backgroundColor = "white"; // Darken background to simulate "lights on"
-    // Additional visual effects for engagement
-    document.body.style.backgroundColor = "black"; // Darken background to simulate "lights on"
-        const hardwareContainer = document.createElement('div');
+    const hardwareContainer = document.createElement('div');
     hardwareContainer.id = 'hardware-interactions';
     document.body.appendChild(hardwareContainer);
 
@@ -218,205 +235,28 @@ function simulateHardwareInteractions() {
     hardwareContainer.appendChild(clockSpeed);
 
     // Sensor Data Acquired
+    const sensor     // Sensor Data Acquired
     const sensorData = document.createElement('p');
-    sensorData.innerHTML = 'Sensor Data: <strong>ACQUIRED</strong>';
+    sensorData.innerHTML = 'Sensor Data: <strong>Value: 1234</strong> (Sensor connected and data read)';
     hardwareContainer.appendChild(sensorData);
 
-}
-
-// Assuming showSimulationCompleteWindow is defined elsewhere to handle final message display
-
-// Call this function at the appropriate place in your script, possibly after creating server and data windows
-simulateAssemblerScript();
-
-const generateIPAddress = () => `192.168.${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}`;
-
-const serverRoles = [
-  {
-    name: "Data Generation Server", //Set this to "Processing PDF". 
-    process: "Generating data...", 
-    execute: () => {
-      // Simulate generating data
-      console.log("Generating random data...");
-      const data = ""; //Replace with the documentation passage.
-      console.log("Generated data:", data);
-      return data;
-    }
-  },
-  {
-    name: "Data Processing Server", //Set this to "Reformatting JSON".
-    process: "Processing data...",
-    execute: () => {
-      // Simulate processing data (e.g., sorting)
-      console.log("Processing data..."); //Change this to "Reformatting Data"
-      const processedData = ""; //Replace with JSON response.
-      console.log("Processed data:", processedData); //Change this to "Reformatting Data"
-      return processedData;
-    }
-  },
-  {
-    name: "Data Cleaning Server", //Set this to "Converting JSON to JSONL"
-    process: "Cleaning data...",
-    execute: () => {
-      // Simulate cleaning data (e.g., removing duplicates)
-      console.log("Cleaning data..."); //Change this to "Converting Data"
-      const cleanedData = ""; //Set this to a JSONL 
-      console.log("Cleaned data:", cleanedData); //Change this to "Converting Data"
-      return cleanedData;
-    }
-  },
-  {
-    name: "Data Reiteration Server", //Set this to "Combining JSON Files"
-    process: "Reiterating data...",
-    execute: () => {
-      // Simulate reiterating over data (e.g., doubling values)
-      console.log("Reiterating data..."); //Set this to "Combining Data"
-      const reiteratedData = ""; //Replace with a different JSON response.
-      console.log("Reiterated data:", reiteratedData); //Set this to "Combined Data"
-      return reiteratedData;
-    }
-  },
-];
-
-// Example of running the simulated server roles in sequence
-const data = serverRoles[0].execute();
-const processedData = serverRoles[1].execute(data);
-const cleanedData = serverRoles[2].execute(processedData);
-const reiteratedData = serverRoles[3].execute(cleanedData);
-serverRoles[4].execute(reiteratedData);
-
-const windowData = [
-    {
-        title: 'Processor Load Calculation',
-        content: () => `CPU Load at Time T: Load(T) = 1 - exp(-λ * T)<br>Where λ represents the arrival rate of tasks`
-    },
-    {
-        title: 'Ohm\'s Law Variations for CPU Power',
-        content: () => Array.from({length: 8}, () => `P = V^2 / R; Where V = ${Math.floor(Math.random() * 5) + 1}V, R = ${Math.floor(Math.random() * 100) + 1}Ω`).join('<br>')
-    },
-    {
-        title: 'Capacitive Reactance in Clock Circuits',
-        content: () => Array.from({length: 8}, () => `Xc = 1 / (2πfC); Where f = ${Math.floor(Math.random() * 1000) + 1}Hz, C = ${Math.floor(Math.random() * 100) + 1}μF`).join('<br>')
-    },
-    {
-        title: 'Transistor Switching Times',
-        content: () => Array.from({length: 8}, () => `t = RC; Where R = ${Math.floor(Math.random() * 1000) + 1}Ω, C = ${Math.floor(Math.random() * 100) + 1}pF`).join('<br>')
-    },
-    {
-        title: 'Signal Integrity: Reflection Coefficient',
-        content: () => Array.from({length: 8}, () => `Γ = (Zl - Zo) / (Zl + Zo); Where Zl = ${Math.floor(Math.random() * 100) + 50}Ω, Zo = 50Ω`).join('<br>')
-    },
-    {
-        title: 'Kernel Context Switch Overhead',
-        content: () => `Context Switch Time: t_cs = ${Math.floor(Math.random() * 20) + 5}μs<br>This time includes saving and loading process states`
-    },
-    {
-        title: 'Fourier Transform for Signal Processing',
-        content: () => `FT(f)(ω) = ∫ f(t) * e^(-2πiωt) dt<br>Used for converting time-domain signals to frequency-domain`
-    },
-    {
-        title: 'Power Dissipation in CMOS Circuits',
-        content: () => Array.from({length: 8}, () => `P = αCLV^2f; Where α = 0.5, CL = ${Math.floor(Math.random() * 10) + 1}fF, V = ${Math.floor(Math.random() * 2) + 1}V, f = ${Math.floor(Math.random() * 1000) + 500}MHz`).join('<br>')
-    },
-    {
-        title: 'Nyquist Rate for ADC Conversion',
-        content: () => Array.from({length: 8}, () => `f_nyquist = 2 * f_max; Where f_max = ${Math.floor(Math.random() * 1000) + 100}Hz`).join('<br>')
-    },
-    {
-        title: 'Thermal Resistance in Heatsinks',
-        content: () => Array.from({length: 8}, () => `Rθ = (T_j - T_a) / P; Where T_j = ${Math.floor(Math.random() * 150) + 100}°C, T_a = ${Math.floor(Math.random() * 25) + 25}°C, P = ${Math.floor(Math.random() * 100) + 10}W`).join('<br>')
-    },
-
-    {
-        title: 'Power Dissipation Estimates',
-        content: () => Array.from({length: 8}, () => `P = V^2 / R = ${Math.floor(Math.random() * 10 + 1)}W`).join('<br>')
-    },
-    {
-        title: 'Filter Attenuation Levels',
-        content: () => Array.from({length: 8}, () => `A = -20log(${Math.random().toFixed(2)}) dB`).join('<br>')
-    },
-    {
-        title: 'Dynamic Data - Noise and Signal',
-        content: () => Array.from({length: 8}, () => `Noise: ${Math.random().toFixed(2)} dB, Signal: ${Math.random().toFixed(2)}`).join('<br>')
-    },
-    {
-        title: 'LLM Structured Data - Code Simulations',
-        content: () => Array.from({length: 8}, () => `return ${Math.random().toFixed(2)}; // simulated output`).join('<br>')
-    },
-    {
-        title: 'LLM Structured Data - Data Generation',
-        content: () => Array.from({length: 8}, () => `[${Array.from({length: 3}, () => Math.random().toFixed(2)).join(', ')}],`).join('<br>')
-    },
-    {
-        title: 'LLM Structured Data - Logic Constructs',
-        content: () => Array.from({length: 8}, () => `if (input > ${Math.random().toFixed(2)}) { return true; } else { return false; }`).join('<br>')
-    }
-];
-
-// Example function to dynamically create and update content boxes
-function createAndUpdateBoxes() {
-    windowData.forEach((data, index) => {
-        const serverBox = document.getElementById(`server-box-${index}`);
-        const dataDiv = document.createElement('div');
-        dataDiv.innerHTML = `<h4>${data.title}</h4><p>${data.content()}</p>`;
-        serverBox.appendChild(dataDiv);
-    });
-}
-
-// Call this function to initialize the boxes after the document has loaded
-document.addEventListener('DOMContentLoaded', createAndUpdateBoxes);
-function createServerWindows() {
-    serverRoles.forEach((server, index) => {
-        setTimeout(() => {
-            const ip = generateIPAddress(); // Dynamically generate IP address
-            const windowDiv = document.createElement('div');
-            windowDiv.className = 'window visible';
-            windowDiv.innerHTML = `<h4>${server.name}</h4><div class="ip-address">${ip}</div><p>${server.process}</p>`;
-            document.getElementById('matrix').insertBefore(windowDiv, document.getElementById('matrix').firstChild); // Insert at the start
-        }, index * 1000); // Stagger the server windows appearance
-    });
-}
-
-function createDataWindows() {
-    windowData.forEach((data, index) => {
-        setTimeout(() => {
-            const windowDiv = document.createElement('div');
-            windowDiv.className = 'window visible';
-            windowDiv.innerHTML = `<h4>${data.title}</h4><p id="content-${index}" style="white-space: pre-line;">${data.content()}</p>`;
-            document.getElementById('matrix').appendChild(windowDiv); // Append at the end
-        }, (serverRoles.length * 500) + (index * 1000)); // Ensure data windows appear after server windows
-    });
-}
-
-function showFinalSimulationCompleteWindow() {
-    // This function displays the very last full-screen window with the final message
-    const finalWindow = document.getElementById('final-fullscreen-window');
-    finalWindow.style.display = 'block';
-    finalWindow.style.zIndex = 20; // Ensure it covers everything else
-}
-
-function revealFinalSimulation() {
-    const allWindows = document.querySelectorAll('.window');
-    const lastWindowDelay = (allWindows.length * 500) + 5000 + 15000; // Consider the time for all windows plus assembler simulation and compilation result
-
+    // Simulate a short animation for visual feedback
     setTimeout(() => {
-        document.getElementById('fullscreen-window').style.display = 'block';
-        simulateAssemblerScript();
-
-        // After the assembler script simulation, show the final simulation complete window
-        setTimeout(showFinalSimulationCompleteWindow, 8000); // Adjust this time based on the length of your assembler simulation
-    }, lastWindowDelay);
+        lightsIndicator.style.color = 'lime';
+        motorIndicator.style.color = 'lime';
+        sensorIndicator.style.color = 'lime';
+    }, 2000);
 }
 
-// Ensure server windows and data windows are created first
-createServerWindows();
-setTimeout(createDataWindows, serverRoles.length * 500);
-revealFinalSimulation(); // Modified to include the final simulation complete window
-// Set a timeout to redirect after showing the final results for 5 seconds
-setTimeout(function() {
-    window.location.href = "/"; // Redirect to the Flask route serving mainpage.html
-}, 35000); // Adjust delay as per requirement
+// Simulate initial page setup
+window.onload = function() {
+    simulateAssemblerScript();
 
+    // Show the final fullscreen window after some delay
+    setTimeout(() => {
+        document.getElementById('final-fullscreen-window').style.display = 'block';
+    }, 10000); // Adjust time as needed
+};
 </script>
-
-
+</body>
+</html>

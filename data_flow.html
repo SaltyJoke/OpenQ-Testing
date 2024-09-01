@@ -1,142 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Enhanced Matrix Data Flow Visualization</title> <!--This needs to be changed to "Our Current Process" or similar wording.-->
-    <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=GaEcLJsDatd8PdQpws4ZfHYWjU8o7dMW9MUJ2ws5hTw4boHCCOPOBxSbion31kxMTezusMIIXe0yX1TBJa6_kwmxGn6x_MUgW3tPdmGibD8eqWWvCQ9cmJD_-YMI1_VLI0srJ_635UeKTnIH7gO5A7q8QPtmZbgKF1guNFKvpn1JF0-t7ywisnLtgdtSUhwXad-0Y6Yd8B4ad5QJqrjHKYuXjrmAayuZRpzHrKBZvDcZppRXCfSTqSV8IOJjobuEh4-o9KRjEhxmCwHmyDQvYQ" charset="UTF-8"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <style>
-        body {
-            font-family: 'Courier New', monospace;
-            background-color: #000;
-            color: #0f0;
-            overflow: hidden;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            text-align: center;
-            padding: 0 50px;
-        }
-        .box {
-            width: 250px;
-            min-height: 250px;
-            max-height: 300px;
-            border: 3px solid #0f0;
-            position: absolute;
-            overflow-y: hidden; /* Hide overflow content */
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            flex-direction: column;
-            padding: 20px;
-            box-sizing: border-box;
-            animation: matrixEffect 5s infinite linear;
-            font-size: 14px;
-        }
-        .circle {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 4px solid #0f0;
-            position: absolute;
-            top: 10%;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            animation: matrixPulse 2s infinite ease-in-out;
-            z-index: 10;
-            box-shadow: 0 0 15px #0f0, 0 0 30px #0f0, 0 0 45px #0f0;
-            cursor: pointer; /* Make the circle clickable */
-        }
-        .description {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80%;
-            font-size: 16px;
-            padding: 10px;
-            text-align: center;
-            z-index: 5;
-        }
-        #box1 { top: 20%; left: 10%; }
-        #box2 { top: 20%; right: 10%; }
-        #box3 { bottom: 20%; left: 50%; transform: translateX(-50%);
-        animation: shake 0.8s infinite; /* Apply the shake animation */
-
-        }
-        @keyframes matrixEffect {
-            0% { background-color: rgba(0, 255, 0, 0.1); }
-            50% { background-color: rgba(0, 255, 0, 0.3); }
-            100% { background-color: rgba(0, 255, 0, 0.1); }
-        }
-        @keyframes matrixPulse {
-            0%, 100% { transform: translateX(-50%) scale(1); box-shadow: 0 0 15px #0f0, 0 0 30px #0f0, 0 0 45px #0f0; }
-            50% { transform: translateX(-50%) scale(1.1); box-shadow: 0 0 20px #0f0, 0 0 40px #0f0, 0 0 60px #0f0, 0 0 80px #0f0; }
-        }
-    </style>
+    <title>Data Flow Page</title>
+    <meta charset="utf-8">
 </head>
 <body>
-<div class="box" id="box1">
-    <h3>Electronics Data</h3> <!--Change this to be about the PDF files we are using for the RISC-V architecture. Use example sentences from the documentation Paul shared.-->
-    <div id="electronicsData"></div>
-</div>
-<div class="box" id="box2">
-    <h3>Low-Level Code</h3> <!--Change this to be about the JSON files we have genereated utilizing the process_pdf.py script we have been working on this week. Use promps from the reformatted JSON files you generated with the reformat.py script-->
-    <div id="lowLevelCode"></div>
-</div>
-<div class="box" id="box3">
-    <h3>Binary Data for Simulation</h3> <!--Change this to be about the JSONL files we have generated utilizng the json2jsonl.py script we have been working on this week. Use prompts from the jsonl files you generated with the json2jsonl.py script-->
-    <div id="binaryData"></div>
-</div>
-<div class="circle" id="dataFlowCircle">Let's See It!</div> <!--This needs changed to a button you can click. The button needs to open the live.html file-->
-
-<!--The description class needs to have its text changed to simply describe the process of utilizng the scripts to go from PDF files to the JSONL files we are going to use to train our module. This will be described more in depth in later pages of the site.-->
-<div class="description">
-    This visualization represents the continuous data flow in the development of embedded systems, showcasing the iterative process of training and fine-tuning within a simulated Matrix environment.
-</div>
-
-<script>
-    document.getElementById('dataFlowCircle').onclick = function() {
-        // Delayed redirect
-        setTimeout(() => { window.location.href = 'live.html'; }, 3000);
-    };
-
-    const maxItems = 8;
-    function generateElectronicsData() {
-        const pdf = ["Resistor: 100 Ohm", "Capacitor: 10uF", "Transistor: NPN", "Microcontroller: ATmega328"]; //Put sentences from the PDF files here.
-        return "PDF: " + pdf[Math.floor(Math.random() * pdf.length)];
-    }
-
-    function generateLowLevelCode() {
-        const json = ["while(1) { PORTB ^= 1; }", "if (PINB & 1) { /* Toggle LED */ }", "ISR(TIMER1_COMPA_vect) { /* Timer Interrupt */ }"]; //Put the generated prompts from the AI from our JSON files here.
-        return "JSON: " + json[Math.floor(Math.random() * json.length)];
-    }
-
-    function generateBinaryData() {
-        const jsonl =[] //Put JSONL prompts here from the converted JSON files.
-        return "JSONL: " + jsonl[Math.floor(Math.random() * jsonl.length)];
-    }
-
-    function updateContent() {
-        const updateAndLimit = (selector, dataGenerator) => {
-            const container = document.querySelector(selector);
-            container.insertAdjacentHTML('beforeend', `<p>${dataGenerator()}</p>`);
-            let items = container.querySelectorAll('p');
-            if(items.length > maxItems) items[0].remove();
-        };
-
-        updateAndLimit('#electronicsData', generateElectronicsData);
-        updateAndLimit('#lowLevelCode', generateLowLevelCode);
-        updateAndLimit('#binaryData', generateBinaryData);
-    }
-
-    setInterval(updateContent, 2000); // Update content every 2 seconds
-</script>
+    <h1>Data Flow Page</h1>
+    <!-- Add a button to navigate back to Autonomous_Attenuation_Scheme.html -->
+    <button id="navigateBackButton">Go Back to Random Story Generator</button>
+    <script>
+        // Add functionality to the navigateBackButton
+        document.getElementById('navigateBackButton').addEventListener('click', function() {
+            window.location.href = 'Autonomous_Attenuation_Scheme.html'; // Ensure the filename matches the actual file
+        });
+    </script>
 </body>
 </html>
