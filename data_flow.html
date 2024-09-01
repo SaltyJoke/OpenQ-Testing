@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title> Current Work Stage </title> <!--This needs to be changed to "Our Current Process" or similar wording.-->
+    <title> OUR PROGRESS </title> <!--This needs to be changed to "Our Current Process" or similar wording.-->
     <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=GaEcLJsDatd8PdQpws4ZfHYWjU8o7dMW9MUJ2ws5hTw4boHCCOPOBxSbion31kxMTezusMIIXe0yX1TBJa6_kwmxGn6x_MUgW3tPdmGibD8eqWWvCQ9cmJD_-YMI1_VLI0srJ_635UeKTnIH7gO5A7q8QPtmZbgKF1guNFKvpn1JF0-t7ywisnLtgdtSUhwXad-0Y6Yd8B4ad5QJqrjHKYuXjrmAayuZRpzHrKBZvDcZppRXCfSTqSV8IOJjobuEh4-o9KRjEhxmCwHmyDQvYQ" charset="UTF-8"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <style>
         body {
@@ -83,22 +83,22 @@
 </head>
 <body>
 <div class="box" id="box1">
-    <h3>Electronics Data</h3> <!--Change this to be about the PDF files we are using for the RISC-V architecture. Use example sentences from the documentation Paul shared.-->
+    <h3> Processing of RISC V architectures </h3> <!--Change this to be about the PDF files we are using for the RISC-V architecture. Use example sentences from the documentation Paul shared.-->
     <div id="electronicsData"></div>
 </div>
 <div class="box" id="box2">
-    <h3>Low-Level Code</h3> <!--Change this to be about the JSON files we have genereated utilizing the process_pdf.py script we have been working on this week. Use promps from the reformatted JSON files you generated with the reformat.py script-->
+    <h3> Generated JSON Codes for Fine Tune </h3> <!--Change this to be about the JSON files we have genereated utilizing the process_pdf.py script we have been working on this week. Use promps from the reformatted JSON files you generated with the reformat.py script-->
     <div id="lowLevelCode"></div>
 </div>
 <div class="box" id="box3">
-    <h3>Binary Data for Simulation</h3> <!--Change this to be about the JSONL files we have generated utilizng the json2jsonl.py script we have been working on this week. Use prompts from the jsonl files you generated with the json2jsonl.py script-->
+    <h3> JSON to JSONL </h3> <!--Change this to be about the JSONL files we have generated utilizng the json2jsonl.py script we have been working on this week. Use prompts from the jsonl files you generated with the json2jsonl.py script-->
     <div id="binaryData"></div>
 </div>
 <div class="circle" id="dataFlowCircle">Let's See It!</div> <!--This needs changed to a button you can click. The button needs to open the live.html file-->
 
 <!--The description class needs to have its text changed to simply describe the process of utilizng the scripts to go from PDF files to the JSONL files we are going to use to train our module. This will be described more in depth in later pages of the site.-->
 <div class="description">
-    This visualization represents the continuous data flow in the development of embedded systems, showcasing the iterative process of training and fine-tuning within a simulated Matrix environment.
+    We utilize Python scripts to process PDF files, extracting the content and converting it into a structured JSON format. This data is then reformatted and transformed into a JSONL file, optimized for further use. The reformatted data is subsequently fine-tuned on the GPT-4 Mini model, ensuring high-quality results tailored to specific training needs.
 </div>
 
 <script>
@@ -119,7 +119,78 @@
     }
 
     function generateBinaryData() {
-        const jsonl =[] //Put JSONL prompts here from the converted JSON files.
+        const jsonl =[ 
+                            
+        {
+        "messages": [
+            {
+                "role": "system",
+                "content": "expert in RISC V"
+            },
+            {
+                "role": "user",
+                "content": "What steps are proposed to validate the gem5 simulation results against real hardware implementations, such as FPGA-based softcore implementations?"
+            },
+            {
+                "role": "assistant",
+                "content": "The proposed steps for validating the gem5 simulation results against real hardware implementations, like FPGA-based softcore implementations, typically include: 1. **Benchmarking Framework**: Establishing a standard set of benchmark workloads that will be used for validation, ensuring they represent real-world scenarios relevant to the target applications. 2. **Performance Metrics Comparison**: Running the same benchmarks on both gem5 and the FPGA hardware, and collecting performance metrics such as execution time, throughput, and resource utilization. 3. **Functional Verification**: Ensuring that the outputs from both the gem5 simulation and the FPGA implementation match for a variety of inputs, confirming correctness of the implementation. 4. **Profiling and Analysis**: Analyzing the performance bottlenecks in gem5 and comparing them with the FPGA results to identify discrepancies and fine-tune the simulator models. 5. **Iterative Refinement**: Utilizing the insights gained from the previous steps to iteratively refine the gem5 configurations, ensuring that the simulated architecture closely mimics the behavior of the real hardware. 6. **Documentation and Reporting**: Documenting the findings from the validation process, including any limitations discovered in gem5, to provide a clear comparison between the simulation and real hardware performance."
+            }
+        ]
+    }
+
+    {
+        "messages": [
+            {
+                "role": "system",
+                "content": "expert in xTern"
+            },
+            {
+                "role": "user",
+                "content": "How does xTern improve energy efficiency for TNN inference?"
+            },
+            {
+                "role": "assistant",
+                "content": "xTern improves energy efficiency for TNN inference by implementing specialized low-power instructions that facilitate ternary arithmetic directly on general-purpose cores. The key benefits include:\n1. **Higher Throughput**: The optimized kernels utilizing xTern instructions achieve 67% higher throughput compared to traditional 2-bit operations, allowing more computations per unit of energy.\n2. **Minimal Power Increase**: The power consumption only marginally increases by 5.2%, which is offset by the gains in throughput, leading to a 57.1% improvement in overall energy efficiency.\n3. **Reduced Silicon Area Overhead**: The xTern extension incurs only a 0.9% increase in silicon area, ensuring that the deployment of TNNs remains cost-effective in edge AI platforms. Overall, these factors contribute to enabling RISC-V based systems to efficiently process TNNs while conserving energy."
+            }
+        ]
+    }
+
+    {
+        "messages": [
+            {
+                "role": "system",
+                "content": "expert in RISC-V platform scalability"
+            },
+            {
+                "role": "user",
+                "content": "Discuss the scalability of the proposed RISC-V platform when increasing the number of clusters. How does this affect throughput and power efficiency?"
+            },
+            {
+                "role": "assistant",
+                "content": "The scalability of the proposed RISC-V platform is influenced significantly by the architecture's ability to efficiently add more clusters. As the number of clusters increases, the platform can enhance its processing capabilities, leading to higher throughput. This increased throughput is generally due to the parallel processing capabilities of multiple clusters, which can handle more tasks simultaneously. However, scalability also introduces challenges such as increased power consumption and potential communication overhead between clusters. Power efficiency can be optimized by using techniques like dynamic voltage and frequency scaling (DVFS) and workload management to ensure that additional clusters do not lead to a linear increase in power usage. Overall, while increasing clusters can boost performance, careful design considerations are necessary to maintain power efficiency."
+            }
+        ]
+  
+    }
+
+    {
+        "messages": [
+            {
+                "role": "system",
+                "content": "expert in SentryCore"
+            },
+            {
+                "role": "user",
+                "content": "What is the significance of achieving interrupt latencies as low as 6 clock cycles in SentryCore, and how does this compare to other microcontroller architectures?"
+            },
+            {
+                "role": "assistant",
+                "content": "Achieving interrupt latencies as low as 6 clock cycles in SentryCore is significant because it ensures rapid response times for safety-critical applications, which is essential in real-time control systems such as automotive and robotics. This low latency allows the system to react quickly to external events, maintaining the reliability and performance required for safety-critical tasks. In comparison, many traditional microcontroller architectures may have interrupt latencies ranging from tens to hundreds of clock cycles, depending on their design and the complexity of the interrupt handling mechanisms. Thus, SentryCore's performance represents a substantial improvement, enabling it to meet the stringent timing requirements of mixed-criticality systems."
+            }
+        ]
+    },
+        
+        ] //Put JSONL prompts here from the converted JSON files.
         return "JSONL: " + jsonl[Math.floor(Math.random() * jsonl.length)];
     }
 
