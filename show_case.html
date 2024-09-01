@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Autonomous Server and Data Processing Simulation</title> <!--Change this to Our Process For Teaching The AI-->
-<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=1nI1KG-WeMVbgNFZ6gWMpcPLZhYuy6pJsd4GIihpyFYrlwP6El0vMdMxMkxnrAnmdLrTF9gWT354Uh_o_0-7krl-mPHgQ-n8EEKXxkcZ8H6Vdlk5mxHUf87qoJLWWdGjvHMvEpJOLwG9_rGBUspZ44stOLOsT7VgDe7_2pC3juW3de-yYXFB4air2eaUClpmIQ4--slhbSm_lX2BRTTnxlUDAIY46WRNjJ0nyqJDetRBXEQXD_Ax3UZl-q8LH699OIQfYEtSvkMqlcUJoNuWsw" charset="UTF-8"></script><style>
+<title>Autonomous Server and Data Processing Simulation</title>
+<style>
     body, html {
         height: 100%;
         margin: 0;
@@ -80,19 +80,24 @@
         overflow: auto;
         animation: fadeIn 2s forwards; /* Use the existing fadeIn animation */
     }
+    h1{
+        margin: 0;
+        align-items: center;
+    }
 </style>
 </head>
 <body>
 
 <div id="matrix"></div>
 <div id="fullscreen-window" class="fullscreen-window">
-    <h2>Assembler Script Simulation</h2> <!--Change this to -->
+    <h2>Assembler Script Simulation</h2>
     <p>Simulating the compilation of the assembler script...</p>
     <pre id="assembler-output"></pre>
 </div>
 <div id="final-fullscreen-window" class="fullscreen-window" style="display: none;">
-    <h2>Final Simulation Complete!</h2>
-    <p>Generative AI Model Processed within 4.8 seconds</p>
+    <h2>Process Simulation Complete!</h2>
+    <p>Completed PDF -> Combined JSONL file in 4.8 seconds</p>
+    <h1>Any Questions?</h1>
 </div>
 
 <script>
@@ -101,8 +106,8 @@ function showSimulationCompleteWindow() {
     windowDiv.className = 'window visible';
     windowDiv.style.textAlign = 'center'; // Center the text for emphasis
     windowDiv.innerHTML = `
-        <h2>Autonomous Infrastructure is Ready!</h2>
-        <p>All operations have finished executing.</p>
+        <h2>Please Hold Processing...</h2>
+        <p>The Process has finished executing.</p>
     `;
 
     // Ensures the final message is displayed after everything else
@@ -112,40 +117,21 @@ function showSimulationCompleteWindow() {
 function simulateAssemblerScript() {
     // Extended and more complex assembler script simulation with hardware interactions
     const script = `
-; Begin Kernel Operation Simulation
-MOV AX, core_init
-MOV BX, io_manager
-CALL BX
-MOV CX, mem_alloc
-CALL CX
-INT 20h
+;   Begin Python Script process.py
+        Loaded 24707.00026.pdf
+        Processing 24707.00026.pdf
+        Page 1/4
+        Page 2/4
+        Page 3/4
+        Page 4/4
+        Output 2407.00026_fine_tuning.json
+        COMPLETED
 
-; Simulated Input/Output Operations
-MOV DX, read_input
-CALL DX
-MOV EX, process_data
-CALL EX
-MOV FX, write_output
-CALL FX
-
-; Simulating hardware interactions
-; Turning on lights
-MOV AX, turn_on_lights
-CALL AX
-
-; Starting motor
-MOV AX, start_motor
-CALL AX
-
-; Reading sensor data
-MOV AX, read_sensors
-CALL AX
-MOV BX, AX ; Store sensor data in BX for processing
-
-; Kernel Shutdown Procedure
-MOV GX, shutdown_kernel
-CALL GX
-INT 20h
+;   Begin Python Script reformat.py
+        Loaded: 2407.00026_fine_tuning.json
+        Processing: 2407.00026_fine_tuning.json
+        Output: reformatted_2407.00026_fine_tuning.json
+        COMPLETED
 `;
 
     // Initially, show the script
@@ -153,20 +139,23 @@ INT 20h
 
     // Simulate compilation and hardware interaction process
     setTimeout(() => {
-        //Set this const to describe the process of PDF -> JSON -> Reformatted JSON -> JSONL -> Combined JSONL
-        const compilationResult = ` 
+        const compilationResult = `
 ; Script has compiled successfully!
 
-; Status: 'Simulated Hardware Interactions'
-Need Light Status: ON
-Need Motor Status: RUNNING
-Need Sensor Data: Acquired
+;   Begin Python Script json2jsonl.py
+        Loaded: reformatted_2407.00026_fine_tuning.json
+        Processing: reformatted_2407.00026_fine_tuning.json
+        Output: reformatted_2407.00026_fine_tuning.jsonl
+        COMPLETE
 
-; Simulated Linux Kernel Interaction
-Input: "Hello, Kernel!"
-Process: Data processing completed.
-Output: "Processed: Hello, Kernel!"
-Kernel Shutdown: Successful.
+;   Begin Python Script accumulate_all_jsonl_files_into_one.py
+        Loaded Folder JSONL
+        Processing In Progress
+        reformatted_2407.00026_fine_tuning.jsonl
+        reformatted_2407.00057_fine_tuning.jsonl
+        reformatted_2407.02622_fine_tuning.jsonl
+        Output: combined_data.jsonl
+        COMPLETE
 `;
 
         // Update the assembler output with the compilation and interaction results
@@ -231,51 +220,61 @@ simulateAssemblerScript();
 
 const generateIPAddress = () => `192.168.${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}`;
 
+
 const serverRoles = [
   {
-    name: "Data Generation Server", //Set this to "Processing PDF". 
-    process: "Generating data...", 
+    name: "Processing PDF Files...",
+    process: "Processing PDF Files...",
     execute: () => {
       // Simulate generating data
-      console.log("Generating random data...");
-      const data = ""; //Replace with the documentation passage.
+      console.log("Prcoessing data...");
+      const data = Array.from({ length: 10 }, () => Math.floor(Math.random() * 100));
       console.log("Generated data:", data);
       return data;
     }
   },
   {
-    name: "Data Processing Server", //Set this to "Reformatting JSON".
-    process: "Processing data...",
-    execute: () => {
+    name: "Reformatting JSON Files...",
+    process: "Reformatting JSON...",
+    execute: (data) => {
       // Simulate processing data (e.g., sorting)
-      console.log("Processing data..."); //Change this to "Reformatting Data"
-      const processedData = ""; //Replace with JSON response.
-      console.log("Processed data:", processedData); //Change this to "Reformatting Data"
+      console.log("Reformatting data...");
+      const processedData = data.sort((a, b) => a - b);
+      console.log("Reformatted data:", processedData);
       return processedData;
     }
   },
   {
-    name: "Data Cleaning Server", //Set this to "Converting JSON to JSONL"
-    process: "Cleaning data...",
-    execute: () => {
+    name: "Converting JSON to JSONL...",
+    process: "Converting JSON to JSONL...",
+    execute: (data) => {
       // Simulate cleaning data (e.g., removing duplicates)
-      console.log("Cleaning data..."); //Change this to "Converting Data"
-      const cleanedData = ""; //Set this to a JSONL 
-      console.log("Cleaned data:", cleanedData); //Change this to "Converting Data"
+      console.log("Converting data...");
+      const cleanedData = [...new Set(data)];
+      console.log("Converted data:", cleanedData);
       return cleanedData;
     }
   },
   {
-    name: "Data Reiteration Server", //Set this to "Combining JSON Files"
-    process: "Reiterating data...",
-    execute: () => {
+    name: "Combining JSONL Files...",
+    process: "Combining JSONL FIles...",
+    execute: (data) => {
       // Simulate reiterating over data (e.g., doubling values)
-      console.log("Reiterating data..."); //Set this to "Combining Data"
-      const reiteratedData = ""; //Replace with a different JSON response.
-      console.log("Reiterated data:", reiteratedData); //Set this to "Combined Data"
+      console.log("Combining data...");
+      const reiteratedData = data.map((item) => item * 2);
+      console.log("Combined data:", reiteratedData);
       return reiteratedData;
     }
   },
+  {
+    name: "SHOUTOUT TO OpenQQ INTERNS",
+    process: "Outputting Data...",
+    execute: (data) => {
+      // Simulate outputting data
+      console.log("Outputting data:", data);
+      // This could involve sending data to a file, database, or external system
+    }
+  }
 ];
 
 // Example of running the simulated server roles in sequence
@@ -286,71 +285,30 @@ const reiteratedData = serverRoles[3].execute(cleanedData);
 serverRoles[4].execute(reiteratedData);
 
 const windowData = [
-    {
-        title: 'Processor Load Calculation',
-        content: () => `CPU Load at Time T: Load(T) = 1 - exp(-λ * T)<br>Where λ represents the arrival rate of tasks`
+    { 
+        title: "Processed PDF Files",
+        content: () => "JSON Files Outputted:\n\nTo simulate the Zeeman effect using RISC-V, one can implement a computational model that calculates the energy levels of atomic states in a magnetic field. This involves using the appropriate Hamiltonian and applying perturbation theory. The modularity of RISC-V allows custom instructions for matrix operations that represent the energy state transitions, and the SIMD capabilities can be leveraged to simultaneously compute energy shifts for multiple atoms or spins."
     },
     {
-        title: 'Ohm\'s Law Variations for CPU Power',
-        content: () => Array.from({length: 8}, () => `P = V^2 / R; Where V = ${Math.floor(Math.random() * 5) + 1}V, R = ${Math.floor(Math.random() * 100) + 1}Ω`).join('<br>')
+        title: "Reformating JSON Files",
+        content: () => "Reformatting Complete:\n\nTo simulate the Zeeman effect using RISC-V, one can implement a computational model that calculates the energy levels of atomic states in a magnetic field. This involves using the appropriate Hamiltonian and applying perturbation theory. The modularity of RISC-V allows custom instructions for matrix operations that represent the energy state transitions, and the SIMD capabilities can be leveraged to simultaneously compute energy shifts for multiple atoms or spins."
     },
     {
-        title: 'Capacitive Reactance in Clock Circuits',
-        content: () => Array.from({length: 8}, () => `Xc = 1 / (2πfC); Where f = ${Math.floor(Math.random() * 1000) + 1}Hz, C = ${Math.floor(Math.random() * 100) + 1}μF`).join('<br>')
+        title: "Converted JSON To JSONL",
+        content: () => "COMPLETED"
     },
     {
-        title: 'Transistor Switching Times',
-        content: () => Array.from({length: 8}, () => `t = RC; Where R = ${Math.floor(Math.random() * 1000) + 1}Ω, C = ${Math.floor(Math.random() * 100) + 1}pF`).join('<br>')
+        title: "Combined JSONL Files",
+        content: () => "COMPLETED",
     },
     {
-        title: 'Signal Integrity: Reflection Coefficient',
-        content: () => Array.from({length: 8}, () => `Γ = (Zl - Zo) / (Zl + Zo); Where Zl = ${Math.floor(Math.random() * 100) + 50}Ω, Zo = 50Ω`).join('<br>')
+        title: "Upload JSONL Files for Processing",
+        content: () => "COMPLETED",
     },
     {
-        title: 'Kernel Context Switch Overhead',
-        content: () => `Context Switch Time: t_cs = ${Math.floor(Math.random() * 20) + 5}μs<br>This time includes saving and loading process states`
+        title: "Thank For Stopping By",
+        content: () => ""
     },
-    {
-        title: 'Fourier Transform for Signal Processing',
-        content: () => `FT(f)(ω) = ∫ f(t) * e^(-2πiωt) dt<br>Used for converting time-domain signals to frequency-domain`
-    },
-    {
-        title: 'Power Dissipation in CMOS Circuits',
-        content: () => Array.from({length: 8}, () => `P = αCLV^2f; Where α = 0.5, CL = ${Math.floor(Math.random() * 10) + 1}fF, V = ${Math.floor(Math.random() * 2) + 1}V, f = ${Math.floor(Math.random() * 1000) + 500}MHz`).join('<br>')
-    },
-    {
-        title: 'Nyquist Rate for ADC Conversion',
-        content: () => Array.from({length: 8}, () => `f_nyquist = 2 * f_max; Where f_max = ${Math.floor(Math.random() * 1000) + 100}Hz`).join('<br>')
-    },
-    {
-        title: 'Thermal Resistance in Heatsinks',
-        content: () => Array.from({length: 8}, () => `Rθ = (T_j - T_a) / P; Where T_j = ${Math.floor(Math.random() * 150) + 100}°C, T_a = ${Math.floor(Math.random() * 25) + 25}°C, P = ${Math.floor(Math.random() * 100) + 10}W`).join('<br>')
-    },
-
-    {
-        title: 'Power Dissipation Estimates',
-        content: () => Array.from({length: 8}, () => `P = V^2 / R = ${Math.floor(Math.random() * 10 + 1)}W`).join('<br>')
-    },
-    {
-        title: 'Filter Attenuation Levels',
-        content: () => Array.from({length: 8}, () => `A = -20log(${Math.random().toFixed(2)}) dB`).join('<br>')
-    },
-    {
-        title: 'Dynamic Data - Noise and Signal',
-        content: () => Array.from({length: 8}, () => `Noise: ${Math.random().toFixed(2)} dB, Signal: ${Math.random().toFixed(2)}`).join('<br>')
-    },
-    {
-        title: 'LLM Structured Data - Code Simulations',
-        content: () => Array.from({length: 8}, () => `return ${Math.random().toFixed(2)}; // simulated output`).join('<br>')
-    },
-    {
-        title: 'LLM Structured Data - Data Generation',
-        content: () => Array.from({length: 8}, () => `[${Array.from({length: 3}, () => Math.random().toFixed(2)).join(', ')}],`).join('<br>')
-    },
-    {
-        title: 'LLM Structured Data - Logic Constructs',
-        content: () => Array.from({length: 8}, () => `if (input > ${Math.random().toFixed(2)}) { return true; } else { return false; }`).join('<br>')
-    }
 ];
 
 // Example function to dynamically create and update content boxes
@@ -413,9 +371,11 @@ createServerWindows();
 setTimeout(createDataWindows, serverRoles.length * 500);
 revealFinalSimulation(); // Modified to include the final simulation complete window
 // Set a timeout to redirect after showing the final results for 5 seconds
-setTimeout(function() {
-    window.location.href = "/"; // Redirect to the Flask route serving mainpage.html
-}, 35000); // Adjust delay as per requirement
+
+//This is the method that is bringing the computer to the drive page after the transitions play out. Keep this in case Paul has any files that can work with it.
+// setTimeout(function() {
+//     window.location.href = "/"; // Redirect to the Flask route serving mainpage.html
+// }, 35000); // Adjust delay as per requirement
 
 </script>
 
