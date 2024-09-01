@@ -101,7 +101,6 @@
         This visualization showcases our advanced data transformation pipeline for RISC-V architecture. We leverage natural language processing to distill complex technical documentation into precise, targeted prompts. These prompts fuel our synthetic data generation system, producing high-quality, diverse datasets optimized for training next-generation AI models in RISC-V development.
     </div>
 
-
 <script>
     document.getElementById('dataFlowCircle').onclick = function() {
         // Delayed redirect
@@ -111,16 +110,20 @@
     const maxItems = 8;
     function generateElectronicsData() {
         const pdf = [
-            "Architectural simulators like gem5 enable performance evaluation without needing costly physical prototypes.",
-            "MLIR-based flow provides a flexible and hardware-agnostic approach to compiling and optimizing ML models.",
-            "gem5 offers detailed performance evaluation and modular architectural component simulation for RISC-V.",
-            "IREE enhances MLIR by providing runtime support and efficient execution across diverse hardware platforms.",
-            "Out-of-order (O3CPU) configurations showed up to 5.22× speedup over in-order (MinorCPU) configurations.",
-            "The simulated RISC-V system included configurations with a 2 GHz CPU, 64KB L1 cache, and 3GB DRAM.",
-            "Correctness was verified against QEMU outputs, but issues with RISC-V vector instructions were identified.",
-            "Further refinement is needed to address execution bugs in gem5's RISC-V vector instruction implementation.",
-            "Using Zephyr could reduce overhead, enabling more efficient benchmarking on RISC-V systems.",
-            "Validation against FPGA-based softcore implementations will provide real-world accuracy for gem5 simulations.",
+            "MiniFloat-NN and ExSdotp: An ISA Extension and a Modular Open Hardware Unit for Low-Precision Training on RISC-V Cores",
+            "Static Hardware Partitioning on RISC-V: Shortcomings, Limitations, and Prospects",
+            "An Enclave-based TEE for SE-in-SoC in RISC-V Industry",
+            "RISC-V Toolchain and Agile Development-based Open-source Neuromorphic Processor",
+            "END-TO-END QOS FOR THE OPEN SOURCE SAFETY-RELEVANT RISC-V SELENE PLATFORM",
+            "A “New Ara” for Vector Computing: An Open Source Highly Efficient RISC-V V 1.0 Vector Processor Design",
+            "Efficient Parallelization of 5G-PUSCH on a Scalable RISC-V Many-core Processor",
+            "Verifying RISC-V Physical Memory Protection",
+            "Trusted Hart for Mobile RISC-V Security",
+            "HULK-V: a Heterogeneous Ultra-low-power Linux capable RISC-V SoC",
+            "Control-Flow Integrity at RISC: Attacking RISC-V by Jump-Oriented Programming",
+            "Generic Tagging for RISC-V Binaries",
+            "BARVINN: Arbitrary Precision DNN Accelerator Controlled by a RISC-V CPU",
+            "An Event-Driven Approach To Genotype Imputation On A Custom RISC-V FPGA Cluster"
         ]; //Put sentences from the PDF files here.
         return "PDF: " + pdf[Math.floor(Math.random() * pdf.length)];
     }
