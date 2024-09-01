@@ -84,15 +84,15 @@
 <body>
 <div class="box" id="box1">
     <h3> Processing of RISC V architectures </h3> <!--Change this to be about the PDF files we are using for the RISC-V architecture. Use example sentences from the documentation Paul shared.-->
-    <div id="electronicsData"></div>
+    <div id="Processing of RISC V architectures"></div>
 </div>
 <div class="box" id="box2">
-    <h3> Generated JSON Codes for Fine Tune </h3> <!--Change this to be about the JSON files we have genereated utilizing the process_pdf.py script we have been working on this week. Use promps from the reformatted JSON files you generated with the reformat.py script-->
-    <div id="lowLevelCode"></div>
+    <h3> JSON Codes for Fine Tune </h3> <!--Change this to be about the JSON files we have genereated utilizing the process_pdf.py script we have been working on this week. Use promps from the reformatted JSON files you generated with the reformat.py script-->
+    <div id="JSON Codes for Fine Tune"></div>
 </div>
 <div class="box" id="box3">
     <h3> JSON to JSONL </h3> <!--Change this to be about the JSONL files we have generated utilizng the json2jsonl.py script we have been working on this week. Use prompts from the jsonl files you generated with the json2jsonl.py script-->
-    <div id="binaryData"></div>
+    <div id="JSON to JSONL"></div>
 </div>
 <div class="circle" id="dataFlowCircle">Let's See It!</div> <!--This needs changed to a button you can click. The button needs to open the live.html file-->
 
@@ -108,17 +108,17 @@
     };
 
     const maxItems = 8;
-    function generateElectronicsData() {
-        const pdf = ["Resistor: 100 Ohm", "Capacitor: 10uF", "Transistor: NPN", "Microcontroller: ATmega328"]; //Put sentences from the PDF files here.
+    function generateProcessingofRISCVarchitectures() {
+        const pdf = ["xTern" , "SentyCore" , "RISC V architectures" , "ISA instruction set" , "TNN" , "BNN", "Energy Efficiency"]; //Put sentences from the PDF files here.
         return "PDF: " + pdf[Math.floor(Math.random() * pdf.length)];
     }
 
-    function generateLowLevelCode() {
-        const json = ["while(1) { PORTB ^= 1; }", "if (PINB & 1) { /* Toggle LED */ }", "ISR(TIMER1_COMPA_vect) { /* Timer Interrupt */ }"]; //Put the generated prompts from the AI from our JSON files here.
+    function generateJSONCodesforFineTune() {
+        const json = ["MADD instructions in xTern are crucial for implementing dot products in linear operators like convolutions. These instructions perform 20-way packed-SIMD multiply-add operations on compressed ternary data, which enhances computational efficiency and accelerates the execution of TNN layers.", "The study reported notable performance improvements in terms of execution speed and efficiency for floating-point operations. The use of SIMD extensions allowed for parallel processing of data, resulting in higher throughput for tasks such as neural network training and inference. Additionally, the reduction in instruction overhead due to instruction repetition contributed to a decrease in execution time for complex computational kernels. This combination led to significant speedups in processing times and improved resource utilization, facilitating the handling of larger models and datasets." , "The use of ISA extensions for SIMD (Single Instruction, Multiple Data) floating-point operand streaming and instruction repetition significantly enhances performance by enabling parallel processing of multiple data points with a single instruction. This allows for more efficient utilization of compute resources, as operations like normalization in Layernorm can be executed simultaneously across multiple cores. Additionally, instruction repetition reduces the overhead of control flow, allowing for streamlined execution of repetitive tasks such as matrix operations in the GEMM (General Matrix Multiply) computations. Overall, these extensions lead to improved throughput, reduced latency, and better energy efficiency in processing large datasets commonly found in machine learning models"]; //Put the generated prompts from the AI from our JSON files here.
         return "JSON: " + json[Math.floor(Math.random() * json.length)];
     }
 
-    function generateBinaryData() {
+    function generateJSONtoJSONL() {
         const jsonl =[ 
                             
         {
