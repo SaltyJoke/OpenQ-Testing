@@ -339,7 +339,7 @@ function createServerWindows() {
             const windowDiv = document.createElement('div');
             windowDiv.className = 'window visible';
             windowDiv.innerHTML = `<h4>${server.name}</h4><div class="ip-address">${ip}</div><p>${server.process}</p>`;
-            document.getElementById('matrix').insertBefore(windowDiv, document.getElementById('matrix').firstChild); // Insert at the start
+            document.getElementById('matrix').appendChild(windowDiv); // Insert at the start
         }, index * 1000); // Stagger the server windows appearance
     });
 }
