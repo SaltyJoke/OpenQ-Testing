@@ -18,6 +18,13 @@
         gap: 20px;
         padding: 20px;
         justify-content: center;
+        overflow-y: auto;
+        max-height: 70%;
+        margin-bottom: 2%;
+    }
+    .bottom-text {
+        max-height: 25%;
+        overflow-y: auto;
     }
     .window {
         min-height: 220px;
@@ -89,6 +96,7 @@
 <body>
 
 <div id="matrix"></div>
+<div id="bottom-text" class="bottom-text"></div>
 <div id="fullscreen-window" class="fullscreen-window">
     <h2>Assembler Script Simulation</h2>
     <p>Simulating the compilation of the assembler script...</p>
@@ -171,17 +179,18 @@ function simulateAssemblerScript() {
 
 function simulateHardwareInteractions() {
     // Create elements to visually represent the hardware interactions
+    const bottomText = document.getElementById(`bottom-text`);
     const lightsIndicator = document.createElement('div');
     lightsIndicator.innerHTML = 'User Input: <span style="color:lime;">I need to have some lights turned on</span>';
-    document.body.appendChild(lightsIndicator);
+    bottomText.appendChild(lightsIndicator);
 
     const motorIndicator = document.createElement('div');
     motorIndicator.innerHTML = 'User Input: <span style="color:lime;">I need to have the motor running in the background</span>';
-    document.body.appendChild(motorIndicator);
+    bottomText.appendChild(motorIndicator);
 
     const sensorIndicator = document.createElement('div');
     sensorIndicator.innerHTML = 'Contextual Interpretation:<span style="color:lime;"> Assembler interaction with Kernel for simulating lights and a motor runing in the background</span>';
-    document.body.appendChild(sensorIndicator);
+    bottomText.appendChild(sensorIndicator);
 
     // Additional visual effects for engagement
     document.body.style.backgroundColor = "white"; // Darken background to simulate "lights on"
@@ -189,7 +198,7 @@ function simulateHardwareInteractions() {
     document.body.style.backgroundColor = "black"; // Darken background to simulate "lights on"
         const hardwareContainer = document.createElement('div');
     hardwareContainer.id = 'hardware-interactions';
-    document.body.appendChild(hardwareContainer);
+    bottomText.appendChild(hardwareContainer);
 
     // Light (LED) Status
     const ledStatus = document.createElement('p');
@@ -330,7 +339,7 @@ function createServerWindows() {
             const windowDiv = document.createElement('div');
             windowDiv.className = 'window visible';
             windowDiv.innerHTML = `<h4>${server.name}</h4><div class="ip-address">${ip}</div><p>${server.process}</p>`;
-            document.getElementById('matrix').insertBefore(windowDiv, document.getElementById('matrix').firstChild); // Insert at the start
+            document.getElementById('matrix').appendChild(windowDiv); // Insert at the start
         }, index * 1000); // Stagger the server windows appearance
     });
 }
