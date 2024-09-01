@@ -2,8 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Embedded Systems Exploration</title>
+    <title>OpenQQuantify</title>
+
     <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=YB2B3tcBlmYnObciWoRwMAqskAGRxLbjGjC5VtStci85sXVdSo8mIM3W_cBNU53heWWE5dqD8rt_4Oov2pziTTEtBEEFfKA_qx3ittAXt4nWJmPjzZg3zfi0b7VIl9ne-kiBvRzt4agFvgxUVX8MidriRNfxnYoEoAlaI5Er7dxfgAJ1fuMOlSPRxtHNYHzdoFv0DvpEB4NEjBIDkHaEf-Z8EUsFR4hiYzn64QA2AaunuCw4lJe-lEr48LAW3ZkSfEIt8usaE4-1SPSghRWobddvtytTSCAURX_1wMrZHmtJi1PtgNV64k2cns5Wu5ud" charset="UTF-8"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <style>
         body {
@@ -45,9 +47,10 @@
     </style>
 </head>
 <body>
-    <div class="section" id="system-architecture">
-        <h2>System Architecture</h2>
+    <div class="section" id="system-architecture"> 
+        <h2>System Architecture</h2> <!--Change to "Who is OpenQQuantify?" or similar wording-->
         <div id="essay" class="essay-text"></div>
+
         <button onclick="window.location.href='data_flow.html';">Visualize Data Flow</button>
 
     </div>
@@ -59,15 +62,28 @@
 
     <script>
         $(document).ready(function() {
+            //This needs to be changed to explain what our company is to help with potential funding. This should just be a bsic overview of the company itself as more in-depth detail will be presented in the next box. Text will be under the System Archetecture id of the Section class (aka OpenQQantify)
             const essayText = "Iterative prompts play a critical role in collecting intelligence and formulating logic for interactions between electronics and systems, particularly when leveraging the capabilities of Natural Language Processing (NLP) and Large Language Models (LLMs)... Electronics and their encompassing systems communicate through signals, protocols, and interfaces that are often complex and multifaceted. An NLP LLM, equipped with extensive training data from technical documents, forums, and textbooks, can bridge the gap between the raw technical data and human-readable insights. By formulating iterative prompts that sequentially delve into the intricacies of electronic components, signal processing, system architecture, and integration challenges, users can extract targeted knowledge that directly addresses their needs. For instance, an initial prompt might ask the LLM to explain the role of microcontrollers in embedded systems. Depending on the response, a follow-up prompt could inquire about specific microcontroller features beneficial for real-time operating systems. This iterative deepening not only enhances the user's understanding but also refines the model's focus, leading to more detailed and relevant information being uncovered... Expanded Component List: Includes a wider range of electronic components and categorizes them more distinctly to cater to diverse project needs. Diverse Logic Types: Offers a broader understanding of logic types, crucial for designing various electronic systems. Extended System Examples: Not only includes operating systems but also development platforms that are foundational to open-source projects. Comprehensive Build Architectures: Covers a wider array of processor architectures, including newer and widely used ones like ESP32 and ESP8266. Development Tools: Lists essential open-source tools for developing, building, and debugging embedded systems, including IDEs, compilers, and simulation tools. Community Platforms: Identifies key online platforms where developers share projects, collaborate, and seek help, fostering the open-source community spirit.";
 
-            // Inject the essay content into the "System Architecture" section
+            // Inject the essay content into the "System Architecture/OpenQQuantify" section
             $('#essay').html(essayText.replace(/\n/g, '<br>')).css('opacity', '1');
 
-            const schema = {
+            /*This const should be changed to contain more in-depth information about our company itself. This can range from what we are currently working on at this stage of the startup, future plans for the company, and what we offer to name a few. 
+            The structure of this const will remain the same to help it work with the displaySchemaPart function on line 168
+            A basic structure for the const should be as follows:
+
+          83.  Future Plans: {
+          84.     A future project we are going to do:{
+          85.           What we want to achieve. : How we are preparing to achieve this
+          86.           Tools we will use to achieve this: Strategies to achieve this
+                  }
+            }
+              Repeat this until appropriate.
+            */
+            const schema = { 
                   "$schema": "http://json-schema.org/draft-07/schema#",
-                  "title": "Ultimate Guide to Embedded Open Source System Development",
-                  "description": "An exhaustive schema capturing the vast array of components, tools, software, methodologies, and collaborative ecosystems integral to the development and advancement of open-source embedded systems.",
+                  "title": "Ultimate Guide to Embedded Open Source System Development", //Needs to be changed to "What is OpenQQuantify doing?" or similar wording.
+                  "description": "An exhaustive schema capturing the vast array of components, tools, software, methodologies, and collaborative ecosystems integral to the development and advancement of open-source embedded systems.", //Provide a brief description on what we are currently doing. 
                   "type": "object",
                   "properties": {
                     "ElectronicsComponents": {
