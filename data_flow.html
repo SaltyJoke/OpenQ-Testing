@@ -83,43 +83,178 @@
 </head>
 <body>
 <div class="box" id="box1">
-    <h3>Electronics Data</h3> <!--Change this to be about the PDF files we are using for the RISC-V architecture. Use example sentences from the documentation Paul shared.-->
+    <h3>Raw RISC-V Data</h3> <!--Change this to be about the PDF files we are using for the RISC-V architecture. Use example sentences from the documentation Paul shared.-->
     <div id="electronicsData"></div>
 </div>
 <div class="box" id="box2">
-    <h3>Low-Level Code</h3> <!--Change this to be about the JSON files we have genereated utilizing the process_pdf.py script we have been working on this week. Use promps from the reformatted JSON files you generated with the reformat.py script-->
+    <h3>Prompt Generation</h3> <!--Change this to be about the JSON files we have genereated utilizing the process_pdf.py script we have been working on this week. Use promps from the reformatted JSON files you generated with the reformat.py script-->
     <div id="lowLevelCode"></div>
 </div>
 <div class="box" id="box3">
-    <h3>Binary Data for Simulation</h3> <!--Change this to be about the JSONL files we have generated utilizng the json2jsonl.py script we have been working on this week. Use prompts from the jsonl files you generated with the json2jsonl.py script-->
+    <h3>Synthetic Data Generation</h3> <!--Change this to be about the JSONL files we have generated utilizng the json2jsonl.py script we have been working on this week. Use prompts from the jsonl files you generated with the json2jsonl.py script-->
     <div id="binaryData"></div>
 </div>
 <div class="circle" id="dataFlowCircle">Let's See It!</div> <!--This needs changed to a button you can click. The button needs to open the live.html file-->
 
 <!--The description class needs to have its text changed to simply describe the process of utilizng the scripts to go from PDF files to the JSONL files we are going to use to train our module. This will be described more in depth in later pages of the site.-->
 <div class="description">
-    This visualization represents the continuous data flow in the development of embedded systems, showcasing the iterative process of training and fine-tuning within a simulated Matrix environment.
+    This visualization showcases our advanced data transformation pipeline for RISC-V architecture. We leverage natural language processing to distill complex technical documentation into precise, targeted prompts. These prompts fuel our synthetic data generation system, producing high-quality, diverse datasets optimized for training next-generation AI models in RISC-V development.
 </div>
 
 <script>
     document.getElementById('dataFlowCircle').onclick = function() {
         // Delayed redirect
-        setTimeout(() => { window.location.href = '/matrix'; }, 3000);
+        setTimeout(() => { window.location.href = 'live.html'; }, 3000);
     };
 
     const maxItems = 8;
     function generateElectronicsData() {
-        const pdf = ["Resistor: 100 Ohm", "Capacitor: 10uF", "Transistor: NPN", "Microcontroller: ATmega328"]; //Put sentences from the PDF files here.
+        const pdf = [
+            "MiniFloat-NN and ExSdotp: An ISA Extension and a Modular Open Hardware Unit for Low-Precision Training on RISC-V Cores",
+            "Static Hardware Partitioning on RISC-V: Shortcomings, Limitations, and Prospects",
+            "An Enclave-based TEE for SE-in-SoC in RISC-V Industry",
+            "RISC-V Toolchain and Agile Development-based Open-source Neuromorphic Processor",
+            "END-TO-END QOS FOR THE OPEN SOURCE SAFETY-RELEVANT RISC-V SELENE PLATFORM",
+            "A “New Ara” for Vector Computing: An Open Source Highly Efficient RISC-V V 1.0 Vector Processor Design",
+            "Efficient Parallelization of 5G-PUSCH on a Scalable RISC-V Many-core Processor",
+            "Verifying RISC-V Physical Memory Protection",
+            "Trusted Hart for Mobile RISC-V Security",
+            "HULK-V: a Heterogeneous Ultra-low-power Linux capable RISC-V SoC",
+            "Control-Flow Integrity at RISC: Attacking RISC-V by Jump-Oriented Programming",
+            "Generic Tagging for RISC-V Binaries",
+            "BARVINN: Arbitrary Precision DNN Accelerator Controlled by a RISC-V CPU",
+            "An Event-Driven Approach To Genotype Imputation On A Custom RISC-V FPGA Cluster"
+        ]; //Put sentences from the PDF files here.
         return "PDF: " + pdf[Math.floor(Math.random() * pdf.length)];
     }
 
     function generateLowLevelCode() {
-        const json = ["while(1) { PORTB ^= 1; }", "if (PINB & 1) { /* Toggle LED */ }", "ISR(TIMER1_COMPA_vect) { /* Timer Interrupt */ }"]; //Put the generated prompts from the AI from our JSON files here.
+        const json = [
+        `{
+                "messages": [
+                    {
+                        "role": "system",
+                        "content": "Memory Protection Specialist"
+                    },
+                    {
+                        "role": "user",
+                        "content": "Generate RISC-V assembly code to configure Physical Memory Protection (PMP) for a TEE environment, focusing on memory isolation policies for secure and non-secure operations."
+                    },
+                    {
+                        "role": "assistant",
+                        "content": "\n\n    .section .text\n    .globl _start\n\n_start:\n    # Initialize PMP configuration\n    # Set PMP for secure region\n    li t0, 0x80000000  # Base address of secure region\n    li t1, 0x200000   # Size of secure region (2MB)\n    li t2, 0x01      # Read/Write/Execute permissions\n    li t3, 0x00      # No access for other regions\n\n    # Configure PMP entry 0 for secure memory\n    csrw pmpaddr0, t0     # Set PMP address\n    csrw pmpcfg0, t2      # Set PMP config for secure region\n\n    # Initialize PMP for non-secure region\n    li t0, 0x00000000  # Base address of non-secure region\n    li t1, 0x80000000  # Size of non-secure region (2GB)\n\n    # Configure PMP entry 1 for non-secure memory\n    csrw pmpaddr1, t0     # Set PMP address\n    li t2, 0x00      # No access for non-secure region\n    csrw pmpcfg1, t2      # Set PMP config for non-secure region\n\n    # Enable PMP\n    li t0, 0x01      # PMP is enabled\n    csrw pmpcfg0, t0  # Commit PMP configuration\n\n    # Additional PMP configurations can be added as needed\n\n    # End of memory protection setup\n    # Jump to main application code or TEE entry point\n    j main\n\nmain:\n    # Main application code for the TEE\n    # Implement functionality here\n    # ...\n\n    # Exit or loop indefinitely\n    j main\n\n.end"
+                    }
+                ]
+            }`,
+
+            `{
+                "messages": [
+                    {
+                        "role": "system",
+                        "content": "Machine Learning Model Trainer"
+                    },
+                    {
+                        "role": "user",
+                        "content": "RISC-V ML Engineer"
+                    },
+                    {
+                        "role": "assistant",
+                        "content": ".data\ninput_data: .space 128   # Space for 16 FP8 values\nweights: .space 128        # Space for 16 FP8 weights\noutput: .space 4           # Space for a single FP32 output\n\n.text\n.globl main\nmain:\n    la a0, input_data      # Load address of input_data\n    la a1, weights         # Load address of weights\n    la a2, output          # Load address of output\n    li t0, 16              # Number of elements\n    li t1, 0               # Initialize index i = 0\nloop:\n    lb t2, 0(a0)          # Load FP8 from input_data\n    lb t3, 0(a1)          # Load FP8 from weights\n    mul t4, t2, t3        # Perform FP8 multiplication (simulated)\n    add t5, t5, t4        # Accumulate result in t5\n    addi a0, a0, 1        # Move to the next FP8 element\n    addi a1, a1, 1        # Move to the next FP8 element\n    addi t1, t1, 1        # Increment index i\n    bne t1, t0, loop      # Repeat until i < 16\n    sw t5, 0(a2)          # Store result\n    ret\n"
+            }`,
+
+            `{
+                "messages": [
+                    {
+                        "role": "system",
+                        "content": "Low-Power Optimization Engineer"
+                    },
+                    {
+                        "role": "user",
+                        "content": "Develop RISC-V assembly code that optimizes the low-power performance of the Wenquxing 22A processor when executing SNN instructions. The code should minimize power consumption without sacrificing processing speed."
+                    },
+                    {
+                        "role": "assistant",
+                        "content": "\n# RISC-V Assembly Code for Low-Power Optimization on Wenquxing 22A\n\n.section .data\nLTD_probability: .word 0x1E   # Example LTD probability (30% in decimal)\n\n.section .text\n.global main\n\nmain:\n    # Load LTD probability\n    lw t0, LTD_probability\n    # Initialize LFSR (Linear Feedback Shift Register)\n    li t1, 0xACE1  # Initial seed for LFSR\n\nloop:\n    # Generate random number using LFSR\n    slli t2, t1, 1     # Shift left\n    xor t2, t2, t1     # XOR with t1\n    andi t2, t2, 0x3FF # 10-bit random number\n    # Check if random number is less than or equal to LTD probability\n    ble t2, t0, depress_weight\n    j continue\n\ndepress_weight:\n    # Set synaptic weight to 0 (depression action)\n    li t3, 0          # Synaptic weight = 0\n    sw t3, synaptic_weight_address  # Store the weight\n\ncontinue:\n    # Update LFSR for next iteration\n    andi t1, t1, 0x7FFF # Ensure LFSR stays 15-bits\n    # Branch back to loop\n    j loop\n\n.section .bss\nsynaptic_weight_address: .space 4  # Reserve space for synaptic weight\n\n"
+                    }
+                ]
+            }`,
+
+            `{
+                "messages": [
+                    {
+                        "role": "system",
+                        "content": "Privilege Escalation Protection Specialist"
+                    },
+                    {
+                        "role": "user",
+                        "content": "What are some scenarios of improper PMP configuration that could lead to security breaches?"
+                    },
+                    {
+                        "role": "assistant",
+                        "content": "1. **Overly Permissive Configuration**: If PMP registers are set to allow 'R/W' permissions for user mode access to memory regions containing sensitive kernel data, a user application could read or modify this data, leading to privilege escalation.\n\n2. **Incorrect Address Mapping**: If the PMP address is incorrectly set, it may cover unintended memory regions. For example, if a PMP entry meant to protect a secure firmware region accidentally covers a user-accessible memory region, it could allow unauthorized access to sensitive information.\n\n3. **Insufficient PMP Entries**: If not enough PMP entries are configured, the system may not cover all necessary memory regions. An attacker might exploit this by accessing an uncovered area that should have been protected, leading to unauthorized access.\n\n4. **Failure to Flush TLB**: If a system modifies PMP configurations but fails to flush the TLB, old permissions may linger, allowing unauthorized memory accesses based on outdated configurations. This can lead to security vulnerabilities as the TLB may cache addresses that should now be restricted.\n\n5. **Inconsistent PMP Settings**: Having inconsistent PMP settings across different cores in a multi-core system can lead to scenarios where one core is able to access data that another core is supposed to restrict, which can be exploited by attackers to escalate privileges within the system."
+                    }
+                ]
+            }`,
+
+            `{
+                "messages": [
+                    {
+                        "role": "system",
+                        "content": "Neural Network Layer Processor"
+                    },
+                    {
+                        "role": "user",
+                        "content": "RISC-V AI Engineer"
+                    },
+                    {
+                        "role": "assistant",
+                        "content": ".data\ninput_a: .float 1.0, 2.0, 3.0, 4.0\ninput_b: .float 5.0, 6.0, 7.0, 8.0\naccumulator: .float 0.0\n.text\n.globl main\nmain:\n    # Load pointers to inputs and output\n    la a0, input_a\n    la a1, input_b\n    la a2, accumulator\n    # Load the inputs\n    flw f0, 0(a0)\n    flw f1, 4(a0)\n    flw f2, 8(a0)\n    flw f3, 12(a0)\n    flw f4, 0(a1)\n    flw f5, 4(a1)\n    flw f6, 8(a1)\n    flw f7, 12(a1)\n    # Compute ExSdotp for FP16 to FP32\n    exsdotp.s f8, f0, f4, f1, f5, f2, f6, f3, f7\n    # Store the result\n    fsw f8, 0(a2)\n    # Exit\n    li a7, 10\n    ecall\n"
+                    }
+                ]
+            }`,
+
+            `{
+                "messages": [
+                    {
+                        "role": "system",
+                        "content": "Floating-Point Unit Designer"
+                    },
+                    {
+                        "role": "user",
+                        "content": "Embedded Systems Engineer"
+                    },
+                    {
+                        "role": "assistant",
+                        "content": "\n# Fused Multiply-Add for FP8\n\n.section .data\n.a:    .byte 0x7F   # Example FP8 value (1.0)\n.b:    .byte 0x80   # Example FP8 value (2.0)\n.c:    .byte 0x3F   # Example FP8 value (0.5)\n.d:    .byte 0x3C   # Example FP8 value (0.75)\n.n:    .word 4       # Number of elements\n\n.section .text\n.global main\nmain:\n    # Initialize pointers\n    la a0, .a           # Load address of a\n    la a1, .b           # Load address of b\n    la a2, .c           # Load address of c\n    la a3, .d           # Load address of d\n    lw t0, .n           # Load number of elements\n    fmv.x.w fa0, zero   # Initialize accumulator to 0.0\n\nloop_fma_fp8:\n    beqz t0, end_loop    # Exit loop if t0 is 0\n    lb t1, 0(a0)         # Load a[i]\n    lb t2, 0(a1)         # Load b[i]\n    lb t3, 0(a2)         # Load c[i]\n    lb t4, 0(a3)         # Load d[i]\n    fmul.s ft0, t1, t2   # Compute a[i] * b[i]\n    fadd.s ft0, ft0, t3  # Add c[i]\n    fmul.s ft0, ft0, t4  # Multiply by d[i]\n    fadd.s fa0, fa0, ft0  # Accumulate result\n    addi a0, a0, 1       # Move to next FP8 element\n    addi a1, a1, 1\n    addi a2, a2, 1\n    addi a3, a3, 1\n    addi t0, t0, -1      # Decrement loop counter\n    j loop_fma_fp8       # Repeat loop\n\nend_loop:\n    # Store result (in higher precision)\n    # (Convert fa0 to desired format and store as needed)\n    ret\n"
+                    }
+                ]
+            }`
+        ]; //Put the generated prompts from the AI from our JSON files here.
         return "JSON: " + json[Math.floor(Math.random() * json.length)];
     }
 
     function generateBinaryData() {
-        const jsonl =[] //Put JSONL prompts here from the converted JSON files.
+        const jsonl = [
+            `{"messages": [{"role": "system", "content": "Data Conversion Module"}, {"role": "user", "content": "RISC-V Hardware Engineer"}, {"role": "assistant", "content": "To convert from FP32 to FP16:\n\n    // Load FP32 value\n    lw a0, 0(x1)            // Load FP32 from address in x1\n    // Extract sign, exponent and mantissa\n    andi a1, a0, 0x80000000 // Sign bit\n    srai a2, a0, 23         // Exponent\n    andi a3, a0, 0x007FFFFF // Mantissa\n    // Adjust exponent for FP16\n    addi a2, a2, -112       // Bias adjustment for FP32 to FP16\n    // Handle overflow/underflow\n    blt a2, 0, handle_underflow\n    bgt a2, 31, handle_overflow\n    // Combine into FP16 format\n    slli a2, a2, 10         // Shift exponent\n    or a0, a1, a2          // Combine sign and exponent\n    andi a3, a3, 0x000007FF // Mask mantissa for FP16\n    or a0, a0, a3           // Final combine\n    // Store FP16 result\n    sw a0, 0(x2)            // Store FP16 to address in x2\n\nhandle_underflow:\n    // Set to zero or smallest subnormal\n    li a0, 0                 // Set result to 0\n    sw a0, 0(x2)\n    ret\n\nhandle_overflow:\n    // Set to max FP16 value\n    li a0, 0x7BFF            // Set result to max FP16\n    sw a0, 0(x2)\n    ret"}]}`,
+
+            `{"messages": [{"role": "system", "content": "ISA-Agnostic Tagging Engineer"}, {"role": "user", "content": "What considerations should be taken into account when modifying the linker for tag insertion in RISC-V?"}, {"role": "assistant", "content": "When modifying the linker for tag insertion in RISC-V, consider the following:  \n1. **Instruction Pairing**: Ensure that HI-LO relocation pairs can accommodate additional instructions between them due to tag insertions. Modify the linker to allow for a specified number of instructions (e.g., three) between these pairs.  \n2. **Distance Calculation**: Adjust the distance calculations for relocation entries to account for the extra instructions added for tagging. This involves updating offsets dynamically based on the number of tags inserted.  \n3. **Optimization Disabling**: Disable specific compiler optimizations that calculate distances between symbols before the final layout step, allowing for accurate symbol resolution post-tag insertion.  \n4. **PC-Relative Jump Adjustments**: Modify the logic that determines if jumps should be PC-relative or indirect by accounting for the potential increase in instruction count due to tagging, thus affecting the maximum jump distances.  \n5. **Metadata Handling**: Ensure that any metadata associated with tags is properly processed and maintained throughout the linking process to maintain the integrity of the instruction stream."}]}`,
+
+            `{"messages": [{"role": "system", "content": "Neural Network Layer Processor"}, {"role": "user", "content": "RISC-V AI Engineer"}, {"role": "assistant", "content": ".data\n    .align 4\n    input1: .half 0x3C00, 0x4000, 0x4200, 0x4400  # FP16 inputs\n    input2: .half 0x3C00, 0x4000, 0x4200, 0x4400  # FP16 inputs\n    output: .space 8  # Space for FP32 output\n\n.text\n    .globl main\nmain:\n    la a0, input1  # Load address of input1\n    la a1, input2  # Load address of input2\n    li a2, 4      # Number of elements\n    li a3, 0      # Initialize output index\n    li t0, 0      # Accumulator initialized to 0\n\nloop:\n    lw t1, 0(a0)   # Load FP16 input1 element\n    lw t2, 0(a1)   # Load FP16 input2 element\n    exsdotp t3, t1, t2, t0  # Execute ExSdotp instruction\n    add t0, t0, t3  # Update accumulator\n    addi a0, a0, 4  # Move to next element in input1\n    addi a1, a1, 4  # Move to next element in input2\n    addi a2, a2, -1 # Decrement loop counter\n    bnez a2, loop   # Repeat until all elements processed\n\n    sw t0, output   # Store the result\n    li a7, 10       # Exit\n    ecall\n"}]}`,
+
+            `{"messages": [{"role": "system", "content": "Machine Learning Model Trainer"}, {"role": "user", "content": "RISC-V ML Engineer"}, {"role": "assistant", "content": ".data\ninput_data: .space 128   # Space for 16 FP8 values\nweights: .space 128        # Space for 16 FP8 weights\noutput: .space 4           # Space for a single FP32 output\n\n.text\n.globl main\nmain:\n    la a0, input_data      # Load address of input_data\n    la a1, weights         # Load address of weights\n    la a2, output          # Load address of output\n    li t0, 16              # Number of elements\n    li t1, 0               # Initialize index i = 0\nloop:\n    lb t2, 0(a0)          # Load FP8 from input_data\n    lb t3, 0(a1)          # Load FP8 from weights\n    mul t4, t2, t3        # Perform FP8 multiplication (simulated)\n    add t5, t5, t4        # Accumulate result in t5\n    addi a0, a0, 1        # Move to the next FP8 element\n    addi a1, a1, 1        # Move to the next FP8 element\n    addi t1, t1, 1        # Increment index i\n    bne t1, t0, loop      # Repeat until i < 16\n    sw t5, 0(a2)          # Store result\n    ret\n"}]}`,
+
+            `{"messages": [{"role": "system", "content": "Compiler-Inserted Code Tagging Specialist"}, {"role": "user", "content": "How can COGENT handle pre-calculated offsets in RISC-V code?"}, {"role": "assistant", "content": "COGENT can handle pre-calculated offsets by ensuring that any tagging and metadata insertion does not disrupt the existing offsets calculated by the compiler. Here are some strategies COGENT employs:\n\n1. **Alignment Enforcement**: All functions must be aligned, which helps preserve the relative positions of instructions. This prevents any changes to offsets when metadata tags are inserted.\n\n2. **Tag Insertion Timing**: Tags are inserted as late as possible in the compilation pipeline, ensuring that pre-calculated offsets remain valid and intact.\n\n3. **Symbol and Relocation Adjustments**: Before emitting the final object file, COGENT adjusts symbol and relocation offsets to account for any tag instructions added. This ensures that the linker correctly resolves addresses without any interference from the inserted tags.\n\n4. **Use of NOPs for Metadata**: COGENT can repurpose NOP instructions to encode metadata, preserving backwards compatibility while ensuring that the logical flow of the program remains unchanged.\n\nBy carefully managing these aspects, COGENT can effectively integrate tagging into RISC-V programs while respecting existing offsets and ensuring functional correctness."}]}`,
+
+            `{"messages": [{"role": "system", "content": "Vector Pipeline Management Specialist"}, {"role": "user", "content": "Can you explain how to optimize performance with pipeline stalls in RISC-V vector processors?"}, {"role": "assistant", "content": "To optimize performance with pipeline stalls in RISC-V vector processors, it's essential to implement effective hazard detection mechanisms. This involves checking for read-after-write (RAW) hazards, where an instruction depends on the result of a prior instruction. Here are strategies to minimize stalls:\n\n1. **Instruction Reordering:** Rearranging instructions to avoid hazards can help keep the pipeline full. For example, if an instruction depends on a previous result, consider moving independent instructions in between.\n\n2. **Stall Insertion:** When a hazard is detected, rather than allowing the pipeline to continue and potentially cause incorrect execution, a stall can be introduced. This can be as simple as inserting NOP (no-operation) instructions.\n\n3. **Utilizing Speculative Execution:** If the processor architecture allows, speculative execution can be employed to guess the outcome of branches and keep the pipeline busy until the correct path is determined.\n\n4. **Use of Pipeline Buffers:** Implementing buffers between stages can help absorb some delays by allowing downstream instructions to proceed while upstream instructions are still being resolved.\n\n5. **Enhanced Hazard Detection Logic:** By employing more complex logic to foresee potential hazards, the processor can make decisions on whether to stall or proceed, ultimately optimizing throughput.\n\nBy applying these strategies, the impacts of pipeline stalls can be minimized, leading to improved performance in executing RVV 1.0 instructions."}]}`,
+
+            `{"messages": [{"role": "system", "content": "Dynamic Job Scheduling Specialist"}, {"role": "user", "content": "Could you explain how the memory access patterns are optimized in the provided RISC-V assembly code?"}, {"role": "assistant", "content": "The provided RISC-V assembly code optimizes memory access patterns for DNN execution on the BARVINN accelerator by employing nested loops for efficient address generation and data handling. Here's how it achieves that:\n\n1. **Layer-wise Processing**: The outer loop iterates through each layer of the DNN, allowing the MVUs to process one layer at a time. This helps manage memory accesses in a structured way, enabling the efficient loading of weights and activations for each specific layer.\n\n2. **Inner Loop for Activations**: The inner loop handles the individual activations corresponding to the current layer. This ensures that each activation is processed sequentially, reducing the chance of cache misses and optimizing the use of the memory bandwidth.\n\n3. **Address Calculation**: The code calculates the addresses for weights, activations, and outputs using offsets based on the current layer index. This allows for contiguous memory access patterns that are more efficient than random access, thereby improving cache utilization.\n\n4. **Efficient Use of Registers**: Temporary registers are used to store intermediate values (like weights and activations) just before processing. This minimizes redundant memory accesses and speeds up execution by keeping frequently used data in the CPU registers.\n\n5. **Pipelining**: By processing one layer while another layer\u2019s data is being fetched, the code is designed to utilize the pipelined execution capabilities of the MVUs. This reduces idle times between operations and enhances throughput.\n\n6. **Serialization of Outputs**: The outputs from MVU operations are stored immediately after computation, allowing for quick access by subsequent layers without needing to wait for all computations to finish. This is crucial for maintaining a continuous flow of data through the DNN.\n\nOverall, these strategies work together to enhance the efficiency of data flow between MVUs, which is essential for achieving high performance in pipelined DNN execution."}]}`,
+
+            `{"messages": [{"role": "system", "content": "Data Transposition Engineer"}, {"role": "user", "content": "Write RISC-V assembly code to transpose data for bit-serial computation on the BARVINN accelerator."}, {"role": "assistant", "content": "\n\n# Constants\n.data\ninput_tensor:  .space 4096    # Space for 1K words, adjust as necessary\noutput_tensor: .space 4096    # Space for transposed tensor\n\n.text\n.globl main\nmain:\n    # Load base addresses\n    la a0, input_tensor     # a0 points to input tensor\n    la a1, output_tensor    # a1 points to output tensor\n    li t0, 64               # Number of input channels or output channels (for example)\n    li t1, 64               # Number of rows/columns in the tensor (assumed square for simplicity)\n    li t2, 0                # Initialize row index\n\nouter_loop:\n    li t3, 0                # Initialize column index\ninner_loop:\n    # Compute index for input and output tensor\n    mul t4, t2, t1          # t4 = row_index * 64\n    add t4, t4, t3          # t4 = t4 + col_index (input tensor index)\n    slli t5, t3, 3          # t5 = col_index * 8 (byte offset for output tensor)\n    add t5, t5, t2          # t5 = t5 + row_index (output tensor index)\n\n    # Load input tensor element\n    lw t6, 0(a0)            # Load input element into t6\n    # Store transposed element\n    sw t6, 0(a1)            # Store transposed element in output tensor\n\n    addi t3, t3, 1          # Increment column index\n    blt t3, t1, inner_loop   # Continue inner loop until column index < t1\n\n    addi t2, t2, 1          # Increment row index\n    blt t2, t0, outer_loop   # Continue outer loop until row index < t0\n\n    # Exit program\n    li a7, 10               # syscall for exit\n    ecall\n"}]}`,
+
+            `{"messages": [{"role": "system", "content": "MVU Memory Optimization Specialist"}, {"role": "user", "content": "What considerations should I keep in mind when optimizing memory usage for the BARVINN accelerator?"}, {"role": "assistant", "content": "When optimizing memory usage for the BARVINN accelerator, consider the following: 1. **Data Precision**: Use quantization techniques to reduce the size of weights and activations (e.g., 2-bit precision). 2. **Memory Alignment**: Ensure data is aligned to the architecture's requirements to prevent performance penalties. 3. **Tiling Strategy**: Implement a tiling strategy to handle large tensors effectively, especially when dimensions are not multiples of the processing elements' widths. 4. **Efficient Padding**: When dealing with convolutions, apply padding only where necessary to maintain output dimensions while minimizing memory overhead. 5. **Reuse of Memory**: Optimize memory by reusing buffers for activations and intermediate results whenever possible. 6. **Access Patterns**: Design access patterns to minimize cache misses and optimize data locality. 7. **CSR Configuration**: Utilize MVU-specific Control and Status Registers (CSRs) to control memory access and optimize data flow through the MVU pipeline."}]}`,
+
+            `{"messages": [{"role": "system", "content": "Low-Power Optimization Engineer"}, {"role": "user", "content": "Develop RISC-V assembly code that optimizes the low-power performance of the Wenquxing 22A processor when executing SNN instructions. The code should minimize power consumption without sacrificing processing speed."}, {"role": "assistant", "content": "\n# RISC-V Assembly Code for Low-Power Optimization on Wenquxing 22A\n\n.section .data\nLTD_probability: .word 0x1E   # Example LTD probability (30% in decimal)\n\n.section .text\n.global main\n\nmain:\n    # Load LTD probability\n    lw t0, LTD_probability\n    # Initialize LFSR (Linear Feedback Shift Register)\n    li t1, 0xACE1  # Initial seed for LFSR\n\nloop:\n    # Generate random number using LFSR\n    slli t2, t1, 1     # Shift left\n    xor t2, t2, t1     # XOR with t1\n    andi t2, t2, 0x3FF # 10-bit random number\n    # Check if random number is less than or equal to LTD probability\n    ble t2, t0, depress_weight\n    j continue\n\ndepress_weight:\n    # Set synaptic weight to 0 (depression action)\n    li t3, 0          # Synaptic weight = 0\n    sw t3, synaptic_weight_address  # Store the weight\n\ncontinue:\n    # Update LFSR for next iteration\n    andi t1, t1, 0x7FFF # Ensure LFSR stays 15-bits\n    # Branch back to loop\n    j loop\n\n.section .bss\nsynaptic_weight_address: .space 4  # Reserve space for synaptic weight\n\n"}]}`
+        ]; //Put JSONL prompts here from the converted JSON files.
         return "JSONL: " + jsonl[Math.floor(Math.random() * jsonl.length)];
     }
 

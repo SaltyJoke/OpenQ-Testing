@@ -2,7 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Embedded Systems Exploration</title> <!--Needs to be changed to OpenQQuantify-->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenQQuantify</title>
+
     <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=YB2B3tcBlmYnObciWoRwMAqskAGRxLbjGjC5VtStci85sXVdSo8mIM3W_cBNU53heWWE5dqD8rt_4Oov2pziTTEtBEEFfKA_qx3ittAXt4nWJmPjzZg3zfi0b7VIl9ne-kiBvRzt4agFvgxUVX8MidriRNfxnYoEoAlaI5Er7dxfgAJ1fuMOlSPRxtHNYHzdoFv0DvpEB4NEjBIDkHaEf-Z8EUsFR4hiYzn64QA2AaunuCw4lJe-lEr48LAW3ZkSfEIt8usaE4-1SPSghRWobddvtytTSCAURX_1wMrZHmtJi1PtgNV64k2cns5Wu5ud" charset="UTF-8"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <style>
         body {
@@ -45,9 +48,10 @@
 </head>
 <body>
     <div class="section" id="system-architecture"> 
-        <h2>System Architecture</h2> <!--Change to "Who is OpenQQuantify?" or similar wording-->
+        <h2>Who is OpenQQuantify?</h2> <!--Change to "Who is OpenQQuantify?" or similar wording-->
         <div id="essay" class="essay-text"></div>
-        <button onclick="window.location.href='{{ url_for('data_flow') }}';">Visualize Data Flow</button> <!--Change this to link to open the data_flow.html file-->
+
+        <button onclick="window.location.href='data_flow.html';">Visualize Data Flow</button>
 
     </div>
     <div class="section" id="logic-classification">
@@ -59,7 +63,7 @@
     <script>
         $(document).ready(function() {
             //This needs to be changed to explain what our company is to help with potential funding. This should just be a bsic overview of the company itself as more in-depth detail will be presented in the next box. Text will be under the System Archetecture id of the Section class (aka OpenQQantify)
-            const essayText = "Iterative prompts play a critical role in collecting intelligence and formulating logic for interactions between electronics and systems, particularly when leveraging the capabilities of Natural Language Processing (NLP) and Large Language Models (LLMs)... Electronics and their encompassing systems communicate through signals, protocols, and interfaces that are often complex and multifaceted. An NLP LLM, equipped with extensive training data from technical documents, forums, and textbooks, can bridge the gap between the raw technical data and human-readable insights. By formulating iterative prompts that sequentially delve into the intricacies of electronic components, signal processing, system architecture, and integration challenges, users can extract targeted knowledge that directly addresses their needs. For instance, an initial prompt might ask the LLM to explain the role of microcontrollers in embedded systems. Depending on the response, a follow-up prompt could inquire about specific microcontroller features beneficial for real-time operating systems. This iterative deepening not only enhances the user's understanding but also refines the model's focus, leading to more detailed and relevant information being uncovered... Expanded Component List: Includes a wider range of electronic components and categorizes them more distinctly to cater to diverse project needs. Diverse Logic Types: Offers a broader understanding of logic types, crucial for designing various electronic systems. Extended System Examples: Not only includes operating systems but also development platforms that are foundational to open-source projects. Comprehensive Build Architectures: Covers a wider array of processor architectures, including newer and widely used ones like ESP32 and ESP8266. Development Tools: Lists essential open-source tools for developing, building, and debugging embedded systems, including IDEs, compilers, and simulation tools. Community Platforms: Identifies key online platforms where developers share projects, collaborate, and seek help, fostering the open-source community spirit.";
+            const essayText = "OpenQQuantify stands at the forefront of a technological revolution, merging the boundless potential of artificial intelligence with the precision and innovation of electronics development. Our mission is to harness state-of-the-art, performance-optimized language learning models (LLMs) and cutting-edge generative AI for vision, creating a synergistic bridge that transforms how we conceptualize, design, and implement electronic systems. At OpenQQuantify, we're not just building tools; we're cultivating a community of innovators, thinkers, and creators. Together, we are setting the stage for the next wave of technological breakthroughs in electronics development, powered by the synergy of artificial intelligence and human creativity. Join us in shaping a future where the potential for innovation is limitless, and the speed of development is accelerated beyond imagination.";
 
             // Inject the essay content into the "System Architecture/OpenQQuantify" section
             $('#essay').html(essayText.replace(/\n/g, '<br>')).css('opacity', '1');
@@ -78,95 +82,79 @@
             */
             const schema = { 
                   "$schema": "http://json-schema.org/draft-07/schema#",
-                  "title": "Ultimate Guide to Embedded Open Source System Development", //Needs to be changed to "What is OpenQQuantify doing?" or similar wording.
-                  "description": "An exhaustive schema capturing the vast array of components, tools, software, methodologies, and collaborative ecosystems integral to the development and advancement of open-source embedded systems.", //Provide a brief description on what we are currently doing. 
+                  "title": "What is OpenQQuantify doing?", //Needs to be changed to "What is OpenQQuantify doing?" or similar wording.
+                  "description": "Currently we are gathering detailed data on RISC-V development, processor, and hardware components for LLM processing. Then we process the data to fine-tune for building code, process functions, etc. Our goal is to have a proper fine-tuned model that is an expert in RISC-V architecture.", //Provide a brief description on what we are currently doing. 
                   "type": "object",
                   "properties": {
-                    "ElectronicsComponents": {
+                    "CurrentPlans": {
                       "type": "object",
                       "properties": {
-                        "BasicComponents": {
+                        "FineTuningLLM": {
                           "type": "array",
                           "items": { "type": "string" },
-                          "examples": ["Resistors", "Capacitors", "Inductors", "Diodes", "Transistors"]
-                        },
-                        "AdvancedComponents": {
-                          "type": "array",
-                          "items": { "type": "string" },
-                          "examples": ["Microcontrollers", "SoCs (System on Chips)", "FPGAs (Field-Programmable Gate Arrays)", "DSPs (Digital Signal Processors)"]
-                        },
-                        "InterfaceModules": {
-                          "type": "array",
-                          "items": { "type": "string" },
-                          "examples": ["USB Controllers", "CAN Bus Modules", "Bluetooth Modules", "Wi-Fi Modules", "LoRa Modules"]
-                        },
-                        "Sensors": {
-                          "type": "array",
-                          "items": { "type": "string" },
-                          "examples": ["Temperature Sensors", "Motion Sensors", "Proximity Sensors", "Optical Sensors", "Environmental Sensors"]
-                        },
-                        "OutputDevices": {
-                          "type": "array",
-                          "items": { "type": "string" },
-                          "examples": ["LEDs", "LCD Displays", "OLED Screens", "Motors", "Speakers"]
-                        },
-                        "PowerManagement": {
-                          "type": "array",
-                          "items": { "type": "string" },
-                          "examples": ["Voltage Regulators", "Battery Management Systems", "Solar Chargers", "DC-DC Converters"]
+                          "examples": ["RISC-V", "processing documents", "reformat JSON files", "convert JSON to JSONL", "Combine all JSONL files", "upload and fine tune"]
                         }
                       },
-                      "required": ["BasicComponents", "AdvancedComponents", "InterfaceModules", "Sensors", "OutputDevices", "PowerManagement"]
+                      "required": ["FineTuningLLM"]
                     },
-                    "MicrocontrollersAndProcessors": {
+                    "FuturePlans": {
                       "type": "array",
                       "items": { "type": "string" },
-                      "examples": ["ATmega328 (Arduino)", "ESP32", "ARM Cortex-M4", "Raspberry Pi Pico (RP2040)", "STM32F103 (Blue Pill)", "Intel Quark"]
+                      "examples": ["building AI for vision", "integrating AI with electronics", "optimizing performance", "scaling solutions", "expanding into new markets", "supporting open-source initiatives", "fostering innovation", "educating the next generation", "driving positive change", "partnership with data providers", "baseline model training", "model selection webinar", "create synthetic data using GAI", "launch interactive demo", "task-specific fine-tuning", "partner with electronics companies", "community feedback loop", "case study presentation", "release documentation and tutorials", "host virtual event for official release" ]
                     },
-                    "DevelopmentBoardsAndKits": {
-                      "type": "array",
-                      "items": { "type": "string" },
-                      "examples": ["Arduino Uno/Nano/Mega", "Raspberry Pi 3/4/Zero", "BeagleBone Black/Green", "ESP8266 NodeMCU", "NVIDIA Jetson Nano", "Intel Edison"]
+                    "WhatWeCanOffer": {
+                      "type": "object",
+                      "properties": {
+                        "LLMSolution": {
+                          "type": "array",
+                          "items": { "type": "string" },
+                          "examples": ["GPT-4", "LLaMA", "Mistral", "feedback loops", "embedded systems", "simulate electronic circuits", "design solutions"]
+                        },
+                        "2DSchematicSolution": {
+                          "type": "array",
+                          "items": { "type": "string" },
+                          "examples": ["Schematics", "user prompt", "user-defined paramters", "advanced text analysis", "detailed report generation", "graphical output"]
+                        },
+                        "3DGameEngineSolution": {
+                          "type": "array",
+                          "items": { "type": "string" },
+                          "examples": ["Unity", "GoDot (Open-source)", "Nvidia Omniverse", "3D models", "animations", "real-time rendering", "physics simulations", "AI integration", "VR/AR/MR", "simulate sensor functionality"]
+                        },
+                        "Expertise": {
+                          "type": "array",
+                          "items": { "type": "string" },
+                          "examples": ["RISC-V architecture", "LLM processing", "AI for vision", "electronics development", "embedded systems", "software development", "hardware design"]
+                        },
+                        "Services": {
+                          "type": "array",
+                          "items": { "type": "string" },
+                          "examples": ["consulting", "training", "development", "prototyping", "testing", "debugging", "optimization", "documentation", "support", "maintenance", "upgrades", "customization", "integration", "migration", "scaling", "security", "compliance", "licensing", "ethics"]
+                        },
+                        "Products": {
+                          "type": "array",
+                          "items": { "type": "string" },
+                          "examples": ["hardware components", "development boards", "kits", "modules", "shields", "sensors", "actuators", "displays", "connectors", "cables", "tools", "accessories", "software libraries", "firmware", "applications", "platforms", "operating systems", "tools", "services", "training", "documentation", "support", "maintenance", "upgrades", "customization", "integration", "migration", "scaling", "security", "compliance", "licensing", "ethics"]
+                        },
+                        "DevelopmentAndSimulationTools": {
+                          "type": "array",
+                          "items": { "type": "string" },
+                          "examples": ["Eclipse Embedded CDT", "SimulIDE", "Proteus VSM", "QEMU", "GDB (GNU Debugger)", "Visual Studio Code", "LabVIEW", "MATLAB/Simulink", "Python", "TensorFlow", "PyTorch", "Arduino", "Raspberry Pi", "Arduino Software (IDE)", "GCC (GNU Compiler Collection)", "Rust for Embedded", "MicroPython", "FreeRTOS", "Linux (Embedded)", "Zephyr OS"]
+                        },
+                        "OpenSourceCommunitiesAndForums": {
+                          "type": "array",
+                          "items": { "type": "string" },
+                          "examples": ["GitHub", "GitLab", "Reddit (r/arduino, r/embedded, r/ECE)", "EEWeb", "Electro-Tech-Online", "Hackster.io", "Instructables", "Y Combinator's Hacker News"]
+                        },
+                        "OpenSourceLicensesAndEthics": {
+                          "type": "array",
+                          "items": { "type": "string" },
+                          "examples": ["GPLv3", "MIT License", "Creative Commons", "Apache License 2.0", "Copyleft", "Permissive"]
+                        },
+                      },
+                      "required": ["LLMSolution", "2DSchematicSolution", "3DGameEngineSolution", "Expertise", "Services", "Products", "DevelopmentAndSimulationTools", "OpenSourceCommunitiesAndForums", "OpenSourceLicensesAndEthics"]
+                      }
                     },
-                    "ArchitecturesAndPlatforms": {
-                      "type": "array",
-                      "items": { "type": "string" },
-                      "examples": ["RISC-V", "ARM Cortex-A/R/M", "MIPS", "AVR", "x86 and x86_64", "Microchip PIC", "8051", "Arduino Platform", "PlatformIO", "MBED"]
-                    },
-                    "SoftwareAndFirmware": {
-                      "type": "array",
-                      "items": { "type": "string" },
-                      "examples": ["Arduino Software (IDE)", "GCC (GNU Compiler Collection)", "Rust for Embedded", "MicroPython", "FreeRTOS", "Linux (Embedded)", "Zephyr OS"]
-                    },
-                    "DevelopmentAndSimulationTools": {
-                      "type": "array",
-                      "items": { "type": "string" },
-                      "examples": ["Eclipse Embedded CDT", "SimulIDE", "Proteus VSM", "QEMU", "GDB (GNU Debugger)", "Visual Studio Code", "LabVIEW", "MATLAB/Simulink"]
-                    },
-                    "PCBDesignAndManufacturing": {
-                      "type": "array",
-                      "items": { "type": "string" },
-                      "examples": ["KiCad EDA", "EAGLE", "Altium Designer", "Fritzing", "Gerber Files", "OSH Park", "PCBWay"]
-                    },
-                    "OpenSourceCommunitiesAndForums": {
-                      "type": "array",
-                      "items": { "type": "string" },
-                      "examples": ["GitHub", "GitLab", "Reddit (r/arduino, r/embedded, r/ECE)", "EEWeb", "Electro-Tech-Online", "Hackster.io", "Instructables", "Y Combinator's Hacker News"]
-                    },
-                    "OpenSourceLicensesAndEthics": {
-                      "type": "array",
-                      "items": { "type": "string" },
-                      "examples": ["GPLv3", "MIT License", "Creative Commons", "Apache License 2.0", "Copyleft", "Permissive"]
-                    },
-                    "BestPracticesInDesignAndTesting": {
-                      "type": "array",
-                      "items": { "type": "string" },
-                      "examples": ["Unit Testing for Embedded", "Continuous Integration (CI)", "Modular Design Principles", "Documentation Best Practices", "Security By Design", "Agile Methodologies for Hardware"]
-                    }
-                  },
-                  "required": ["ElectronicsComponents", "MicrocontrollersAndProcessors", "DevelopmentBoardsAndKits", "ArchitecturesAndPlatforms", "SoftwareAndFirmware", "DevelopmentAndSimulationTools", "PCBDesignAndManufacturing", "OpenSourceCommunitiesAndForums", "OpenSourceLicensesAndEthics", "BestPracticesInDesignAndTesting"]
-
-
+                  "required": ["CurrentPlans", "FuturePlans", "WhatWeCanOffer"]
             };
 
             // Function to display each schema part in the "Logic & Classification" section
@@ -199,5 +187,7 @@
             }
         });
     </script>
+    
 </body>
+
 </html>
