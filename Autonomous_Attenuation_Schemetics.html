@@ -2,7 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Embedded Systems Exploration</title> <!--Needs to be changed to OpenQQuantify-->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenQQuantify</title>
+
     <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=YB2B3tcBlmYnObciWoRwMAqskAGRxLbjGjC5VtStci85sXVdSo8mIM3W_cBNU53heWWE5dqD8rt_4Oov2pziTTEtBEEFfKA_qx3ittAXt4nWJmPjzZg3zfi0b7VIl9ne-kiBvRzt4agFvgxUVX8MidriRNfxnYoEoAlaI5Er7dxfgAJ1fuMOlSPRxtHNYHzdoFv0DvpEB4NEjBIDkHaEf-Z8EUsFR4hiYzn64QA2AaunuCw4lJe-lEr48LAW3ZkSfEIt8usaE4-1SPSghRWobddvtytTSCAURX_1wMrZHmtJi1PtgNV64k2cns5Wu5ud" charset="UTF-8"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <style>
         body {
@@ -47,7 +50,8 @@
     <div class="section" id="system-architecture"> 
         <h2>System Architecture</h2> <!--Change to "Who is OpenQQuantify?" or similar wording-->
         <div id="essay" class="essay-text"></div>
-        <button onclick="window.location.href='{{ url_for('data_flow') }}';">Visualize Data Flow</button> <!--Change this to link to open the data_flow.html file-->
+
+        <button onclick="window.location.href='data_flow.html';">Visualize Data Flow</button>
 
     </div>
     <div class="section" id="logic-classification">
@@ -199,5 +203,7 @@
             }
         });
     </script>
+    
 </body>
+
 </html>
