@@ -13,21 +13,27 @@
             background: #000; 
             color: #0f0;
             display: flex; 
-            justify-content: center; 
+            flex-direction: column;
             align-items: center;
             font-family: 'Courier New', monospace;
         }
         canvas { 
             background-color: black; 
             border: 1px solid #555; 
-            margin: 20px; 
-            max-width: calc(100% - 40px); 
-            max-height: calc(100% - 40px);
+            margin: 10px; 
+            display: flex;
+        }
+        .paragraph {
+            margin: 10px;
+            margin-bottom: 0%;
+            min-height: 80px;
+            overflow: auto;
         }
     </style>
 </head>
 <body>
-<canvas id="processorCanvas"></canvas>
+    <div class="paragraph">Entire processors can be created by streamlining logic through threads you create. Symbols inside represent logic gates within processors. Companies such as Intel give their processors cool code names. In this example we gave simple logic blocks within a theoretical processor names. We can generate different processors based on task oriented prompts. In our backend we have a model that will associate the task to different processors. We achieve a whole different level of efficiency by generating processors, threads, and their code infrastructure based on their architecture and overall task.</div>
+    <canvas id="processorCanvas"></canvas>
 <script>
     const canvas = document.getElementById('processorCanvas');
     canvas.width = window.innerWidth - 40;
@@ -70,18 +76,22 @@
     }
 
     function drawLogicGate(type, x, y) {
+        const SIZE = 2;
         ctx.fillStyle = '#0f0'; // Matrix green color
         ctx.beginPath();
         // Define different shapes for logic gates
         switch (type) {
             case 'AND':
-                ctx.rect(x, y, 20, 20); break;
+                ctx.rect(x, y, SIZE * 4, SIZE * 4); break;
             case 'OR':
-                ctx.arc(x + 10, y + 10, 10, 0, Math.PI * 2, true); break;
+                ctx.arc(x + SIZE * 2, y + SIZE * 2, SIZE * 2, 0, Math.PI * 2, true); break;
             case 'NOT':
-                ctx.moveTo(x, y + 10); ctx.lineTo(x + 20, y); ctx.lineTo(x + 20, y + 20); ctx.closePath(); break;
+                ctx.moveTo(x, y + SIZE * 2); ctx.lineTo(x + SIZE * 4, y); 
+                ctx.lineTo(x + SIZE * 4, y + SIZE * 4); ctx.closePath(); break;
             case 'XOR':
-                ctx.moveTo(x + 5, y); ctx.lineTo(x + 15, y); ctx.lineTo(x + 20, y + 10); ctx.lineTo(x + 15, y + 20); ctx.lineTo(x + 5, y + 20); ctx.lineTo(x, y + 10); ctx.closePath(); break;
+                ctx.moveTo(x + SIZE, y); ctx.lineTo(x + SIZE * 3, y); ctx.lineTo(x + SIZE * 4, y + SIZE * 2); 
+                ctx.lineTo(x + SIZE * 3, y + SIZE * 4); ctx.lineTo(x + SIZE, y + SIZE * 4); ctx.lineTo(x, y + SIZE * 2); 
+                ctx.closePath(); break;
         }
         ctx.fill();
         ctx.stroke();
@@ -128,7 +138,7 @@
     // Call the modified function
     function generateRandomLogicCircuit() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        drawMessage(); // Draw the message first
+        //drawMessage(); // Draw the message first
         const units = [];
         for (let i = 0; i < 10; i++) {
             const name = getRandomName();
