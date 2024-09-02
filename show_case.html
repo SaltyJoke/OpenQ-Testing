@@ -181,21 +181,26 @@ function simulateHardwareInteractions() {
     // Create elements to visually represent the hardware interactions
     const lightsIndicator = document.createElement('div');
     lightsIndicator.innerHTML = 'User Input: How is OpenQQantify processing PDFs?';
-    bottomText.appendChild(lightsIndicator);
-
+    
     const motorIndicator = document.createElement('div');
     motorIndicator.innerHTML = 'User Input: How is OpenQQantify reformatting JSON files?';
-    bottomText.appendChild(motorIndicator);
-
+    
     const sensorIndicator = document.createElement('div');
     sensorIndicator.innerHTML = 'User Input: How is OpenQQantify converting JSON files into JSONL files?';
+
+    // Add a container for these indicators
+    const bottomText = document.createElement('div');
+    bottomText.id = 'bottom-text';
+    bottomText.appendChild(lightsIndicator);
+    bottomText.appendChild(motorIndicator);
     bottomText.appendChild(sensorIndicator);
+    document.body.appendChild(bottomText);
 
     // Additional visual effects for engagement
-    document.body.style.backgroundColor = "white"; // Darken background to simulate "lights on"
-    // Additional visual effects for engagement
-    document.body.style.backgroundColor = "black"; // Darken background to simulate "lights on"
-        const hardwareContainer = document.createElement('div');
+    document.body.style.backgroundColor = "black"; // Set initial background color
+
+    // Create a container for hardware interactions
+    const hardwareContainer = document.createElement('div');
     hardwareContainer.id = 'hardware-interactions';
     document.body.appendChild(hardwareContainer);
 
@@ -213,6 +218,11 @@ function simulateHardwareInteractions() {
     const clockSpeed = document.createElement('p');
     clockSpeed.innerHTML = 'We are running a script called json2jsonl.py to convert the JSON files into JSONL files.';
     hardwareContainer.appendChild(clockSpeed);
+
+    // Optionally, add styles to ensure visibility
+    document.getElementById('hardware-interactions');
+    document.getElementById('bottom-text');
+    document.getElementById('bottom-text');
 }
 
 // Assuming showSimulationCompleteWindow is defined elsewhere to handle final message display
