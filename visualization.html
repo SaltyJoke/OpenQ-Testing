@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Matrix-Themed Processor Logic Circuit Visualization</title>
-    <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=o0OS_lfF77KEI64uy4bUzt0YDKa3GP0037Yj-edHhsFYFFSlzhn21FfK2msngSRoPRxrxwrOkYY5aVO9QdGCw_iu_dsKEldVpKj1T2k-V9SRrlCYMMxOL8J89XtK9CmIBD00sT-cMLXVxP-AcO-tMAcmUq5p07sEIjm_MOv_cxx_2n0ZMcQgk3d1g4s26TaBXkfGx82xGVgioPjqS4VWqTIX9HLBM7e7FkyWE4PDNTVuyGF4sjYR_QErFiNjHq397WjE5zcVjvmEo5s6uI-_OQ" charset="UTF-8"></script><style>
+    <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=o0OS_lfF77KEI64uy4bUzt0YDKa3GP0037Yj-edHhsFYFFSlzhn21FfK2msngSRoPRxrxwrOkYY5aVO9QdGCw_iu_dsKEldVpKj1T2k-V9SRrlCYMMxOL8J89XtK9CmIBD00sT-cMLXVxP-AcO-tMAcmUq5p07sEIjm_MOv_cxx_2n0ZMcQgk3d1g4s26TaBXkfGx82xGVgioPjqS4VWqTIX9HLBM7e7FkyWE4PDNTVuyGF4sjYR_QErFiNjHq397WjE5zcVjvmEo5s6uI-_OQ" charset="UTF-8"></script>
+    <style>
         body, html { 
             margin: 0; 
             padding: 0; 
@@ -12,7 +13,7 @@
             overflow: hidden;
             background: #000; 
             color: #0f0;
-            display: flex; 
+            display: grid; 
             justify-content: center; 
             align-items: center;
             font-family: 'Courier New', monospace;
@@ -33,6 +34,9 @@
     canvas.width = window.innerWidth - 40;
     canvas.height = window.innerHeight - 40;
     const ctx = canvas.getContext('2d');
+
+    // Reserved space for the message
+    const messageHeight = 120; // Adjust height of the reserved space
 
     // Function to draw message
     function drawMessage() {
@@ -104,6 +108,12 @@
         }
     }
 
+    function isOverlapping(x, y, width, height, units) {
+        return units.some(unit => {
+            return !(x + width < unit.x || x > unit.x + unit.width || y + height < unit.y || y > unit.y + unit.height);
+        });
+    }
+
     function drawConnections(units) {
         // Create interesting patterns for lines connecting the units
         ctx.strokeStyle = '#0f0';
@@ -130,14 +140,24 @@
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         drawMessage(); // Draw the message first
         const units = [];
+        const attemptsLimit = 50;
+
         for (let i = 0; i < 10; i++) {
-            const name = getRandomName();
-            const width = 100 + Math.random() * 50;
-            const height = 50 + Math.random() * 50;
-            const x = Math.random() * (canvas.width - width);
-            const y = Math.random() * (canvas.height - height);
-            units.push({x, y, width, height, name});
-            drawComplexLogicUnit(x, y, width, height, name);
+            let name, x, y, width, height;
+            let attempts = 0;
+            do {
+                name = getRandomName();
+                width = 100 + Math.random() * 50;
+                height = 50 + Math.random() * 50;
+                x = Math.random() * (canvas.width - width);
+                y = Math.random() * (canvas.height - height - messageHeight) + messageHeight; // Ensure it's below the text area
+                attempts++;
+            } while (attempts < attemptsLimit && isOverlapping(x, y, width, height, units));
+
+            if (attempts < attemptsLimit) {
+                units.push({x, y, width, height, name});
+                drawComplexLogicUnit(x, y, width, height, name);
+            }
         }
         drawConnections(units);
     }
