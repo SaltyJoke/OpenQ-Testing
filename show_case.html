@@ -179,47 +179,50 @@ function simulateAssemblerScript() {
 
 function simulateHardwareInteractions() {
     // Create elements to visually represent the hardware interactions
-    const bottomText = document.getElementById(`bottom-text`);
     const lightsIndicator = document.createElement('div');
-    lightsIndicator.innerHTML = 'User Input: <span style="color:lime;">I need to have some lights turned on</span>';
-    bottomText.appendChild(lightsIndicator);
-
+    lightsIndicator.innerHTML = 'User Input: How is OpenQQantify processing PDFs?';
+    
     const motorIndicator = document.createElement('div');
-    motorIndicator.innerHTML = 'User Input: <span style="color:lime;">I need to have the motor running in the background</span>';
-    bottomText.appendChild(motorIndicator);
-
+    motorIndicator.innerHTML = 'User Input: How is OpenQQantify reformatting JSON files?';
+    
     const sensorIndicator = document.createElement('div');
-    sensorIndicator.innerHTML = 'Contextual Interpretation:<span style="color:lime;"> Assembler interaction with Kernel for simulating lights and a motor runing in the background</span>';
+    sensorIndicator.innerHTML = 'User Input: How is OpenQQantify converting JSON files into JSONL files?';
+
+    // Add a container for these indicators
+    const bottomText = document.createElement('div');
+    bottomText.id = 'bottom-text';
+    bottomText.appendChild(lightsIndicator);
+    bottomText.appendChild(motorIndicator);
     bottomText.appendChild(sensorIndicator);
+    document.body.appendChild(bottomText);
 
     // Additional visual effects for engagement
-    document.body.style.backgroundColor = "white"; // Darken background to simulate "lights on"
-    // Additional visual effects for engagement
-    document.body.style.backgroundColor = "black"; // Darken background to simulate "lights on"
-        const hardwareContainer = document.createElement('div');
+    document.body.style.backgroundColor = "black"; // Set initial background color
+
+    // Create a container for hardware interactions
+    const hardwareContainer = document.createElement('div');
     hardwareContainer.id = 'hardware-interactions';
-    bottomText.appendChild(hardwareContainer);
+    document.body.appendChild(hardwareContainer);
 
     // Light (LED) Status
     const ledStatus = document.createElement('p');
-    ledStatus.innerHTML = 'LED on Pin 2: <strong>CONNECTED & ON</strong> (Digital HIGH)';
+    ledStatus.innerHTML = 'We are running a script called process.py to convert the PDF files into JSON files';
     hardwareContainer.appendChild(ledStatus);
 
     // Motor Status
     const motorStatus = document.createElement('p');
-    motorStatus.innerHTML = 'Motor on Pins 3 (Direction) & 5 (Speed): <strong>CONNECTED & RUNNING</strong> (Direction: FORWARD, Speed: 50%)';
+    motorStatus.innerHTML = 'We are running a script called reformatt.py to convert the PDF files into reformatted JSON files for readability';
     hardwareContainer.appendChild(motorStatus);
 
     // Clock Speed Setting
     const clockSpeed = document.createElement('p');
-    clockSpeed.innerHTML = 'Clock Speed: <strong>16MHz</strong>';
+    clockSpeed.innerHTML = 'We are running a script called json2jsonl.py to convert the JSON files into JSONL files.';
     hardwareContainer.appendChild(clockSpeed);
 
-    // Sensor Data Acquired
-    const sensorData = document.createElement('p');
-    sensorData.innerHTML = 'Sensor Data: <strong>ACQUIRED</strong>';
-    hardwareContainer.appendChild(sensorData);
-
+    // Optionally, add styles to ensure visibility
+    document.getElementById('hardware-interactions');
+    document.getElementById('bottom-text');
+    document.getElementById('bottom-text');
 }
 
 // Assuming showSimulationCompleteWindow is defined elsewhere to handle final message display
